@@ -12,7 +12,3 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
-Route::post('/submit', 'FormSubmissionController@store');
-
-Route::get('/submission/{id}', 'FormSubmissionController@show');

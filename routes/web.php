@@ -11,6 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('index');
+//});
+
+Route::get('/', 'FormController@index');
+
+Route::post('/submit', 'FormSubmissionController@store');
+
+Route::get('/submission/{id}', 'FormSubmissionController@show');
