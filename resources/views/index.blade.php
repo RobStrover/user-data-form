@@ -3,7 +3,9 @@
 @section('body')
     <div class="container">
         <div class="row align-items-center site-form__container" data-form="{{ json_encode($formSections) }}">
-            <SiteForm />
+            <div class="col">
+                <SiteForm />
+            </div>
         </div>
     </div>
 @stop

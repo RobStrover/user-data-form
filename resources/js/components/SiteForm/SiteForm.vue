@@ -1,7 +1,7 @@
 <template>
 
     <div class="site-form__section-parent accordion">
-        <FormSection v-for="(formSection, index) in formSections" :key="index" :sectionData="formSection" />
+        <FormSection v-for="(formSection, index) in formSections" :index="index" :key="index"  :sectionData="formSection" />
     </div>
 
 </template>
