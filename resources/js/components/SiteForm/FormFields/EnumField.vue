@@ -2,8 +2,8 @@
 
     <div class="form-group">
         <label :for="fieldId">{{ field.label }}</label>
-        <select class="form-control" id="exampleFormControlSelect1">
-            <option>1</option>
+        <select class="form-control" :id="fieldId">
+            <option v-for="(option, index) in field.options" :key="index" :value="option">{{ option }}</option>
         </select>
     </div>
 
@@ -19,8 +19,6 @@
             fieldId() {
                 return `section-${this.section}-field-${this.index}`
             },
-
-
         }
 
     }

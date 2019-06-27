@@ -23,6 +23,11 @@ function initSiteForm(siteFormElement) {
             openSection: 0,
             formSections: JSON.parse(siteFormElement.getAttribute('data-form'))
         },
+        getters: {
+            numberOfFormSections(state) {
+                return state.formSections.length;
+            }
+        },
         actions: {
             submitForm() {
 

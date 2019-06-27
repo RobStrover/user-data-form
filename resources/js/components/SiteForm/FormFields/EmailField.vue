@@ -2,7 +2,7 @@
 
     <div class="form-group">
         <label :for="fieldId">{{ field.label }}</label>
-        <input type="text" class="form-control" :name="field.name" :id="fieldId">
+        <input type="email" class="form-control" :name="field.name" :id="fieldId">
     </div>
 
 </template>

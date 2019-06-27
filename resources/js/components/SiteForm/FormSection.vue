@@ -20,7 +20,8 @@
                         </div>
                     </div>
                     <div class="col-md-4">
-
+                        <button class="btn btn-default btn-block" v-if="previousSection" :target="previousSection">Previous</button>
+                        <button class="btn btn-default btn-block" v-if="nextSection" :target="nextSection">Next</button>
                     </div>
                 </div>
             </div>
@@ -30,6 +31,8 @@
 </template>
 
 <script>
+
+    import { mapGetters } from 'vuex'
 
     import Field_text from './FormFields/TextField'
     import Field_date from './FormFields/DateField'
@@ -51,6 +54,9 @@
         },
 
         computed: {
+            ...mapGetters("siteFormData", [
+                'numberOfFormSections'
+            ]),
             sectionIndex() {
                 return this.index
             },
@@ -59,6 +65,14 @@
             },
             sectionFields() {
                 return this.sectionData.fields;
+            },
+            nextSection() {
+                if (this.index + 1 === this.numberOfFormSections) return;
+                return this.index + 1;
+            },
+            previousSection() {
+                if (this.index !== 0) return 1;
+                return false;
             }
         }
 

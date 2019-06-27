@@ -1873,12 +1873,17 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _FormFields_TextField__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FormFields/TextField */ "./resources/js/components/SiteForm/FormFields/TextField.vue");
-/* harmony import */ var _FormFields_DateField__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FormFields/DateField */ "./resources/js/components/SiteForm/FormFields/DateField.vue");
-/* harmony import */ var _FormFields_EmailField__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./FormFields/EmailField */ "./resources/js/components/SiteForm/FormFields/EmailField.vue");
-/* harmony import */ var _FormFields_EnumField__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./FormFields/EnumField */ "./resources/js/components/SiteForm/FormFields/EnumField.vue");
-/* harmony import */ var _FormFields_TelephoneField__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./FormFields/TelephoneField */ "./resources/js/components/SiteForm/FormFields/TelephoneField.vue");
-/* harmony import */ var _FormFields_TextareaField__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./FormFields/TextareaField */ "./resources/js/components/SiteForm/FormFields/TextareaField.vue");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _FormFields_TextField__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FormFields/TextField */ "./resources/js/components/SiteForm/FormFields/TextField.vue");
+/* harmony import */ var _FormFields_DateField__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./FormFields/DateField */ "./resources/js/components/SiteForm/FormFields/DateField.vue");
+/* harmony import */ var _FormFields_EmailField__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./FormFields/EmailField */ "./resources/js/components/SiteForm/FormFields/EmailField.vue");
+/* harmony import */ var _FormFields_EnumField__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./FormFields/EnumField */ "./resources/js/components/SiteForm/FormFields/EnumField.vue");
+/* harmony import */ var _FormFields_TelephoneField__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./FormFields/TelephoneField */ "./resources/js/components/SiteForm/FormFields/TelephoneField.vue");
+/* harmony import */ var _FormFields_TextareaField__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./FormFields/TextareaField */ "./resources/js/components/SiteForm/FormFields/TextareaField.vue");
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -1910,6 +1915,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+
 
 
 
@@ -1919,19 +1926,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['index', 'sectionData'],
   components: {
-    Field_text: _FormFields_TextField__WEBPACK_IMPORTED_MODULE_0__["default"],
-    Field_date: _FormFields_DateField__WEBPACK_IMPORTED_MODULE_1__["default"],
-    Field_email: _FormFields_EmailField__WEBPACK_IMPORTED_MODULE_2__["default"],
-    Field_enum: _FormFields_EnumField__WEBPACK_IMPORTED_MODULE_3__["default"],
-    Field_tel: _FormFields_TelephoneField__WEBPACK_IMPORTED_MODULE_4__["default"],
-    Field_textarea: _FormFields_TextareaField__WEBPACK_IMPORTED_MODULE_5__["default"]
+    Field_text: _FormFields_TextField__WEBPACK_IMPORTED_MODULE_1__["default"],
+    Field_date: _FormFields_DateField__WEBPACK_IMPORTED_MODULE_2__["default"],
+    Field_email: _FormFields_EmailField__WEBPACK_IMPORTED_MODULE_3__["default"],
+    Field_enum: _FormFields_EnumField__WEBPACK_IMPORTED_MODULE_4__["default"],
+    Field_tel: _FormFields_TelephoneField__WEBPACK_IMPORTED_MODULE_5__["default"],
+    Field_textarea: _FormFields_TextareaField__WEBPACK_IMPORTED_MODULE_6__["default"]
   },
   methods: {
     getFormComponentName: function getFormComponentName(fieldType) {
       return "Field_".concat(fieldType);
     }
   },
-  computed: {
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])("siteFormData", ['numberOfFormSections']), {
     sectionIndex: function sectionIndex() {
       return this.index;
     },
@@ -1940,8 +1947,16 @@ __webpack_require__.r(__webpack_exports__);
     },
     sectionFields: function sectionFields() {
       return this.sectionData.fields;
+    },
+    nextSection: function nextSection() {
+      if (this.index + 1 === this.numberOfFormSections) return;
+      return this.index + 1;
+    },
+    previousSection: function previousSection() {
+      if (this.index !== 0) return 1;
+      return false;
     }
-  }
+  })
 });
 
 /***/ }),
@@ -37307,7 +37322,7 @@ var render = function() {
     _vm._v(" "),
     _c("input", {
       staticClass: "form-control",
-      attrs: { type: "text", name: _vm.field.name, id: _vm.fieldId }
+      attrs: { type: "email", name: _vm.field.name, id: _vm.fieldId }
     })
   ])
 }
@@ -37338,24 +37353,19 @@ var render = function() {
       _vm._v(_vm._s(_vm.field.label))
     ]),
     _vm._v(" "),
-    _vm._m(0)
+    _c(
+      "select",
+      { staticClass: "form-control", attrs: { id: _vm.fieldId } },
+      _vm._l(_vm.field.options, function(option, index) {
+        return _c("option", { key: index, domProps: { value: option } }, [
+          _vm._v(_vm._s(option))
+        ])
+      }),
+      0
+    )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "select",
-      {
-        staticClass: "form-control",
-        attrs: { id: "exampleFormControlSelect1" }
-      },
-      [_c("option", [_vm._v("1")])]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -37384,7 +37394,7 @@ var render = function() {
     _vm._v(" "),
     _c("input", {
       staticClass: "form-control",
-      attrs: { type: "text", name: _vm.field.name, id: _vm.fieldId }
+      attrs: { type: "tel", name: _vm.field.name, id: _vm.fieldId }
     })
   ])
 }
@@ -37524,7 +37534,29 @@ var render = function() {
             )
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "col-md-4" })
+          _c("div", { staticClass: "col-md-4" }, [
+            _vm.previousSection
+              ? _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-default btn-block",
+                    attrs: { target: _vm.previousSection }
+                  },
+                  [_vm._v("Previous")]
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.nextSection
+              ? _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-default btn-block",
+                    attrs: { target: _vm.nextSection }
+                  },
+                  [_vm._v("Next")]
+                )
+              : _vm._e()
+          ])
         ])
       ])
     ])
@@ -51402,6 +51434,11 @@ function initSiteForm(siteFormElement) {
       openSection: 0,
       formSections: JSON.parse(siteFormElement.getAttribute('data-form'))
     },
+    getters: {
+      numberOfFormSections: function numberOfFormSections(state) {
+        return state.formSections.length;
+      }
+    },
     actions: {
       submitForm: function submitForm() {}
     }
@@ -51442,8 +51479,8 @@ module.exports = {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/rob/Workspace/user-data-form/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/rob/Workspace/user-data-form/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\rstro\Documents\Workspace\user-data-form\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\rstro\Documents\Workspace\user-data-form\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
