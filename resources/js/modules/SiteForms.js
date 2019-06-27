@@ -16,6 +16,9 @@ function initSiteForm(siteFormElement) {
 
     Vue.component('siteform', require('../components/SiteForm/SiteForm').default);
 
+    const formEndpoint = siteFormElement.getAttribute('data-form-endpoint')
+    console.log(formEndpoint, siteFormElement.getAttribute('data-form-sections'));
+
     const siteFormData = {
         namespaced: true,
         state: {
@@ -23,19 +26,32 @@ function initSiteForm(siteFormElement) {
             isValid: false,
             openSection: 0,
             formSections: JSON.parse(siteFormElement.getAttribute('data-form-sections')),
-            formEndpoint: JSON.parse(siteFormElement.getAttribute('data-form-endpoint')),
+            formUrl: 'http://localhost:8000/submit',
         },
         getters: {
             numberOfFormSections(state) {
                 return state.formSections.length;
             },
             formPostArray(state) {
+                let formData = {};
 
+                for (let i = 0; i < state.formSections.length; i++) {
+                    let formSectionFields = state.formSections[i]['fields'];
+
+                    for (let i = 0; i < formSectionFields.length; i++) {
+                        const formSectionField = formSectionFields[i];
+                        formData[name] = formSectionField.value || null
+                    }
+                };
+
+                return formData
             }
         },
         mutations: {
-            storeFieldValue(state, { sectionId, fieldName, newValue }) {
-                state.formSections[sectionId][fieldName] = newValue
+            storeFieldValue(state, { sectionId, fieldName, fieldValue }) {
+                state.formSections[sectionId]['fields']
+                    .find(field => field.name == fieldName)
+                    .value = fieldValue
             },
             storeSubmitting(state, status) {
                 state.submitting = status
@@ -54,9 +70,11 @@ function initSiteForm(siteFormElement) {
                 // }
             },
             postForm(context) {
+
+                console.log(context.getters)
                 context.commit('storeSubmitting', true);
 
-                window.axios.post('/admin/uploads/new', context.getters[''])
+                window.axios.post(context.state.formEndpoint, context.getters['formPostArray'])
                     .then( (response) => {
                         context.commit('storeSubmitting', false);
                     })
@@ -73,7 +91,7 @@ function initSiteForm(siteFormElement) {
         modules: {
             siteFormData: siteFormData
         }
-    })
+    });
 
     const siteFormApp = new Vue({
         el: siteFormElement,
@@ -86,4 +104,4 @@ function initSiteForm(siteFormElement) {
 module.exports = {
     initSiteForms,
     initSiteForm
-}
+};

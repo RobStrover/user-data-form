@@ -51714,6 +51714,8 @@ function initSiteForms() {
 
 function initSiteForm(siteFormElement) {
   Vue.component('siteform', __webpack_require__(/*! ../components/SiteForm/SiteForm */ "./resources/js/components/SiteForm/SiteForm.vue")["default"]);
+  var formEndpoint = siteFormElement.getAttribute('data-form-endpoint');
+  console.log(formEndpoint, siteFormElement.getAttribute('data-form-sections'));
   var siteFormData = {
     namespaced: true,
     state: {
@@ -51721,20 +51723,36 @@ function initSiteForm(siteFormElement) {
       isValid: false,
       openSection: 0,
       formSections: JSON.parse(siteFormElement.getAttribute('data-form-sections')),
-      formEndpoint: JSON.parse(siteFormElement.getAttribute('data-form-endpoint'))
+      formUrl: 'http://localhost:8000/submit'
     },
     getters: {
       numberOfFormSections: function numberOfFormSections(state) {
         return state.formSections.length;
       },
-      formPostArray: function formPostArray(state) {}
+      formPostArray: function formPostArray(state) {
+        var formData = {};
+
+        for (var i = 0; i < state.formSections.length; i++) {
+          var formSectionFields = state.formSections[i]['fields'];
+
+          for (var _i = 0; _i < formSectionFields.length; _i++) {
+            var formSectionField = formSectionFields[_i];
+            formData[name] = formSectionField.value || null;
+          }
+        }
+
+        ;
+        return formData;
+      }
     },
     mutations: {
       storeFieldValue: function storeFieldValue(state, _ref) {
         var sectionId = _ref.sectionId,
             fieldName = _ref.fieldName,
-            newValue = _ref.newValue;
-        state.formSections[sectionId][fieldName] = newValue;
+            fieldValue = _ref.fieldValue;
+        state.formSections[sectionId]['fields'].find(function (field) {
+          return field.name == fieldName;
+        }).value = fieldValue;
       },
       storeSubmitting: function storeSubmitting(state, status) {
         state.submitting = status;
@@ -51750,8 +51768,9 @@ function initSiteForm(siteFormElement) {
         context.dispatch('postForm'); // }
       },
       postForm: function postForm(context) {
+        console.log(context.getters);
         context.commit('storeSubmitting', true);
-        window.axios.post('/admin/uploads/new', context.getters['']).then(function (response) {
+        window.axios.post(context.state.formEndpoint, context.getters['formPostArray']).then(function (response) {
           context.commit('storeSubmitting', false);
         })["catch"](function (error) {
           context.commit('storeSubmitting', false);
@@ -51795,8 +51814,8 @@ module.exports = {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/rob/Workspace/user-data-form/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/rob/Workspace/user-data-form/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\rstro\Documents\Workspace\user-data-form\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\rstro\Documents\Workspace\user-data-form\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

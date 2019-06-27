@@ -2,7 +2,7 @@
 
 @section('body')
     <div class="container">
-        <div class="row align-items-center site-form__container" data-endpoint="{{ $formEndpoint }}" data-form-sections="{{ json_encode($formSections) }}">
+        <div class="row align-items-center site-form__container" data-form-endpoint="{{ $formEndpoint }}" data-form-sections="{{ json_encode($formSections) }}">
             <div class="col">
                 <SiteForm />
             </div>
