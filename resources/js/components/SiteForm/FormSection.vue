@@ -1,6 +1,6 @@
 <template>
 
-    <div class="card">
+    <div class="card form-section">
         <div class="card-header form-section__title">
             <h2 class="mb-0">
                 <button class="btn btn-link" type="button">
@@ -20,8 +20,13 @@
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <button class="btn btn-default btn-block" v-if="previousSection" :target="previousSection">Previous</button>
-                        <button class="btn btn-default btn-block" v-if="nextSection" :target="nextSection">Next</button>
+                        <div class="row form-section__button-row align-items-end">
+                            <div class="col">
+                                <button class="btn btn-primary btn-block" v-if="previousSection" :target="previousSection">Previous</button>
+                                <button class="btn btn-primary btn-block" v-if="nextSection" :target="nextSection">Next</button>
+                                <button class="btn btn-success btn-block" v-if="!nextSection" @click="submitForm()">Submit</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -50,6 +55,10 @@
         methods: {
             getFormComponentName(fieldType) {
                 return `Field_${fieldType}`;
+            },
+            submitForm() {
+                console.log('submitting');
+                this.$store.dispatch('siteFormData/submitForm')
             }
         },
 

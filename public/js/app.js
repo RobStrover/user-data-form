@@ -1708,6 +1708,30 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['section', 'index', 'field'],
+  data: function data() {
+    return {
+      inputValue: null
+    };
+  },
+  watch: {
+    inputValue: function inputValue() {
+      this.updateStore();
+      this.updateValidators();
+    }
+  },
+  methods: {
+    updateStore: function updateStore() {
+      var inputData = {
+        'sectionId': this.section,
+        'fieldName': this.field.name,
+        'fieldValue': this.inputValue
+      };
+      this.$store.dispatch('siteFormData/updateFieldValue', inputData);
+    },
+    updateValidators: function updateValidators() {
+      this.$store.dispatch('siteFormData/updateValidators');
+    }
+  },
   computed: {
     fieldId: function fieldId() {
       return "section-".concat(this.section, "-field-").concat(this.index);
@@ -1737,6 +1761,30 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['section', 'index', 'field'],
+  data: function data() {
+    return {
+      inputValue: null
+    };
+  },
+  watch: {
+    inputValue: function inputValue() {
+      this.updateStore();
+      this.updateValidators();
+    }
+  },
+  methods: {
+    updateStore: function updateStore() {
+      var inputData = {
+        'sectionId': this.section,
+        'fieldName': this.field.name,
+        'fieldValue': this.inputValue
+      };
+      this.$store.dispatch('siteFormData/updateFieldValue', inputData);
+    },
+    updateValidators: function updateValidators() {
+      this.$store.dispatch('siteFormData/updateValidators');
+    }
+  },
   computed: {
     fieldId: function fieldId() {
       return "section-".concat(this.section, "-field-").concat(this.index);
@@ -1768,6 +1816,30 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['section', 'index', 'field'],
+  data: function data() {
+    return {
+      inputValue: null
+    };
+  },
+  watch: {
+    inputValue: function inputValue() {
+      this.updateStore();
+      this.updateValidators();
+    }
+  },
+  methods: {
+    updateStore: function updateStore() {
+      var inputData = {
+        'sectionId': this.section,
+        'fieldName': this.field.name,
+        'fieldValue': this.inputValue
+      };
+      this.$store.dispatch('siteFormData/updateFieldValue', inputData);
+    },
+    updateValidators: function updateValidators() {
+      this.$store.dispatch('siteFormData/updateValidators');
+    }
+  },
   computed: {
     fieldId: function fieldId() {
       return "section-".concat(this.section, "-field-").concat(this.index);
@@ -1797,6 +1869,30 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['section', 'index', 'field'],
+  data: function data() {
+    return {
+      inputValue: null
+    };
+  },
+  watch: {
+    inputValue: function inputValue() {
+      this.updateStore();
+      this.updateValidators();
+    }
+  },
+  methods: {
+    updateStore: function updateStore() {
+      var inputData = {
+        'sectionId': this.section,
+        'fieldName': this.field.name,
+        'fieldValue': this.inputValue
+      };
+      this.$store.dispatch('siteFormData/updateFieldValue', inputData);
+    },
+    updateValidators: function updateValidators() {
+      this.$store.dispatch('siteFormData/updateValidators');
+    }
+  },
   computed: {
     fieldId: function fieldId() {
       return "section-".concat(this.section, "-field-").concat(this.index);
@@ -1826,6 +1922,30 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['section', 'index', 'field'],
+  data: function data() {
+    return {
+      inputValue: null
+    };
+  },
+  watch: {
+    inputValue: function inputValue() {
+      this.updateStore();
+      this.updateValidators();
+    }
+  },
+  methods: {
+    updateStore: function updateStore() {
+      var inputData = {
+        'sectionId': this.section,
+        'fieldName': this.field.name,
+        'fieldValue': this.inputValue
+      };
+      this.$store.dispatch('siteFormData/updateFieldValue', inputData);
+    },
+    updateValidators: function updateValidators() {
+      this.$store.dispatch('siteFormData/updateValidators');
+    }
+  },
   computed: {
     fieldId: function fieldId() {
       return "section-".concat(this.section, "-field-").concat(this.index);
@@ -1855,6 +1975,30 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['section', 'index', 'field'],
+  data: function data() {
+    return {
+      inputValue: null
+    };
+  },
+  watch: {
+    inputValue: function inputValue() {
+      this.updateStore();
+      this.updateValidators();
+    }
+  },
+  methods: {
+    updateStore: function updateStore() {
+      var inputData = {
+        'sectionId': this.section,
+        'fieldName': this.field.name,
+        'fieldValue': this.inputValue
+      };
+      this.$store.dispatch('siteFormData/updateFieldValue', inputData);
+    },
+    updateValidators: function updateValidators() {
+      this.$store.dispatch('siteFormData/updateValidators');
+    }
+  },
   computed: {
     fieldId: function fieldId() {
       return "section-".concat(this.section, "-field-").concat(this.index);
@@ -1916,6 +2060,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -1936,6 +2085,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   methods: {
     getFormComponentName: function getFormComponentName(fieldType) {
       return "Field_".concat(fieldType);
+    },
+    submitForm: function submitForm() {
+      console.log('submitting');
+      this.$store.dispatch('siteFormData/submitForm');
     }
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])("siteFormData", ['numberOfFormSections']), {
@@ -37288,8 +37441,25 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("input", {
+      directives: [
+        {
+          name: "model",
+          rawName: "v-model",
+          value: _vm.inputValue,
+          expression: "inputValue"
+        }
+      ],
       staticClass: "form-control",
-      attrs: { type: "text", name: _vm.field.name, id: _vm.fieldId }
+      attrs: { type: "text", id: _vm.fieldId },
+      domProps: { value: _vm.inputValue },
+      on: {
+        input: function($event) {
+          if ($event.target.composing) {
+            return
+          }
+          _vm.inputValue = $event.target.value
+        }
+      }
     })
   ])
 }
@@ -37321,8 +37491,25 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("input", {
+      directives: [
+        {
+          name: "model",
+          rawName: "v-model",
+          value: _vm.inputValue,
+          expression: "inputValue"
+        }
+      ],
       staticClass: "form-control",
-      attrs: { type: "email", name: _vm.field.name, id: _vm.fieldId }
+      attrs: { type: "email", id: _vm.fieldId },
+      domProps: { value: _vm.inputValue },
+      on: {
+        input: function($event) {
+          if ($event.target.composing) {
+            return
+          }
+          _vm.inputValue = $event.target.value
+        }
+      }
     })
   ])
 }
@@ -37355,7 +37542,33 @@ var render = function() {
     _vm._v(" "),
     _c(
       "select",
-      { staticClass: "form-control", attrs: { id: _vm.fieldId } },
+      {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.inputValue,
+            expression: "inputValue"
+          }
+        ],
+        staticClass: "form-control",
+        attrs: { id: _vm.fieldId },
+        on: {
+          change: function($event) {
+            var $$selectedVal = Array.prototype.filter
+              .call($event.target.options, function(o) {
+                return o.selected
+              })
+              .map(function(o) {
+                var val = "_value" in o ? o._value : o.value
+                return val
+              })
+            _vm.inputValue = $event.target.multiple
+              ? $$selectedVal
+              : $$selectedVal[0]
+          }
+        }
+      },
       _vm._l(_vm.field.options, function(option, index) {
         return _c("option", { key: index, domProps: { value: option } }, [
           _vm._v(_vm._s(option))
@@ -37393,8 +37606,25 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("input", {
+      directives: [
+        {
+          name: "model",
+          rawName: "v-model",
+          value: _vm.inputValue,
+          expression: "inputValue"
+        }
+      ],
       staticClass: "form-control",
-      attrs: { type: "tel", name: _vm.field.name, id: _vm.fieldId }
+      attrs: { type: "tel", name: _vm.field.name, id: _vm.fieldId },
+      domProps: { value: _vm.inputValue },
+      on: {
+        input: function($event) {
+          if ($event.target.composing) {
+            return
+          }
+          _vm.inputValue = $event.target.value
+        }
+      }
     })
   ])
 }
@@ -37426,8 +37656,25 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("input", {
+      directives: [
+        {
+          name: "model",
+          rawName: "v-model",
+          value: _vm.inputValue,
+          expression: "inputValue"
+        }
+      ],
       staticClass: "form-control",
-      attrs: { type: "text", name: _vm.field.name, id: _vm.fieldId }
+      attrs: { type: "text", name: _vm.field.name, id: _vm.fieldId },
+      domProps: { value: _vm.inputValue },
+      on: {
+        input: function($event) {
+          if ($event.target.composing) {
+            return
+          }
+          _vm.inputValue = $event.target.value
+        }
+      }
     })
   ])
 }
@@ -37459,8 +37706,25 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("textarea", {
+      directives: [
+        {
+          name: "model",
+          rawName: "v-model",
+          value: _vm.inputValue,
+          expression: "inputValue"
+        }
+      ],
       staticClass: "form-control",
-      attrs: { name: _vm.field.name, id: _vm.fieldId, rows: "3" }
+      attrs: { name: _vm.field.name, id: _vm.fieldId, rows: "3" },
+      domProps: { value: _vm.inputValue },
+      on: {
+        input: function($event) {
+          if ($event.target.composing) {
+            return
+          }
+          _vm.inputValue = $event.target.value
+        }
+      }
     })
   ])
 }
@@ -37486,7 +37750,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "card" }, [
+  return _c("div", { staticClass: "card form-section" }, [
     _c("div", { staticClass: "card-header form-section__title" }, [
       _c("h2", { staticClass: "mb-0" }, [
         _c(
@@ -37535,27 +37799,50 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "col-md-4" }, [
-            _vm.previousSection
-              ? _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-default btn-block",
-                    attrs: { target: _vm.previousSection }
-                  },
-                  [_vm._v("Previous")]
-                )
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.nextSection
-              ? _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-default btn-block",
-                    attrs: { target: _vm.nextSection }
-                  },
-                  [_vm._v("Next")]
-                )
-              : _vm._e()
+            _c(
+              "div",
+              { staticClass: "row form-section__button-row align-items-end" },
+              [
+                _c("div", { staticClass: "col" }, [
+                  _vm.previousSection
+                    ? _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary btn-block",
+                          attrs: { target: _vm.previousSection }
+                        },
+                        [_vm._v("Previous")]
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.nextSection
+                    ? _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary btn-block",
+                          attrs: { target: _vm.nextSection }
+                        },
+                        [_vm._v("Next")]
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  !_vm.nextSection
+                    ? _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-success btn-block",
+                          on: {
+                            click: function($event) {
+                              return _vm.submitForm()
+                            }
+                          }
+                        },
+                        [_vm._v("Submit")]
+                      )
+                    : _vm._e()
+                ])
+              ]
+            )
           ])
         ])
       ])
@@ -51431,16 +51718,45 @@ function initSiteForm(siteFormElement) {
     namespaced: true,
     state: {
       submitting: false,
+      isValid: false,
       openSection: 0,
-      formSections: JSON.parse(siteFormElement.getAttribute('data-form'))
+      formSections: JSON.parse(siteFormElement.getAttribute('data-form-sections')),
+      formEndpoint: JSON.parse(siteFormElement.getAttribute('data-form-endpoint'))
     },
     getters: {
       numberOfFormSections: function numberOfFormSections(state) {
         return state.formSections.length;
+      },
+      formPostArray: function formPostArray(state) {}
+    },
+    mutations: {
+      storeFieldValue: function storeFieldValue(state, _ref) {
+        var sectionId = _ref.sectionId,
+            fieldName = _ref.fieldName,
+            newValue = _ref.newValue;
+        state.formSections[sectionId][fieldName] = newValue;
+      },
+      storeSubmitting: function storeSubmitting(state, status) {
+        state.submitting = status;
       }
     },
     actions: {
-      submitForm: function submitForm() {}
+      updateFieldValue: function updateFieldValue(context, inputData) {
+        context.commit('storeFieldValue', inputData);
+      },
+      updateValidators: function updateValidators(context, inputData) {},
+      submitForm: function submitForm(context) {
+        // if (context.state.isValid) {
+        context.dispatch('postForm'); // }
+      },
+      postForm: function postForm(context) {
+        context.commit('storeSubmitting', true);
+        window.axios.post('/admin/uploads/new', context.getters['']).then(function (response) {
+          context.commit('storeSubmitting', false);
+        })["catch"](function (error) {
+          context.commit('storeSubmitting', false);
+        });
+      }
     }
   };
   var siteFormStore = new Vuex.Store({
@@ -51479,8 +51795,8 @@ module.exports = {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\rstro\Documents\Workspace\user-data-form\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\rstro\Documents\Workspace\user-data-form\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/rob/Workspace/user-data-form/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/rob/Workspace/user-data-form/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

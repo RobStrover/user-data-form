@@ -20,16 +20,50 @@ function initSiteForm(siteFormElement) {
         namespaced: true,
         state: {
             submitting: false,
+            isValid: false,
             openSection: 0,
-            formSections: JSON.parse(siteFormElement.getAttribute('data-form'))
+            formSections: JSON.parse(siteFormElement.getAttribute('data-form-sections')),
+            formEndpoint: JSON.parse(siteFormElement.getAttribute('data-form-endpoint')),
         },
         getters: {
             numberOfFormSections(state) {
                 return state.formSections.length;
+            },
+            formPostArray(state) {
+
+            }
+        },
+        mutations: {
+            storeFieldValue(state, { sectionId, fieldName, newValue }) {
+                state.formSections[sectionId][fieldName] = newValue
+            },
+            storeSubmitting(state, status) {
+                state.submitting = status
             }
         },
         actions: {
-            submitForm() {
+            updateFieldValue(context, inputData) {
+                context.commit('storeFieldValue', inputData);
+            },
+            updateValidators(context, inputData) {
+
+            },
+            submitForm(context) {
+                // if (context.state.isValid) {
+                    context.dispatch('postForm');
+                // }
+            },
+            postForm(context) {
+                context.commit('storeSubmitting', true);
+
+                window.axios.post('/admin/uploads/new', context.getters[''])
+                    .then( (response) => {
+                        context.commit('storeSubmitting', false);
+                    })
+                    .catch ( (error) => {
+                        context.commit('storeSubmitting', false);
+                    });
+
 
             }
         }

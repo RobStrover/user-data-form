@@ -69,7 +69,8 @@ class FormController extends Controller
         ];
 
         return view('index')
-            ->with('formSections', $formSections);
+            ->with('formSections', $formSections)
+            ->with('formEndpoint', url("/submit"));
     }
 
 }

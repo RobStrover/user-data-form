@@ -11112,3 +11112,7 @@ a.text-dark:focus {
   background-color: #ffc600;
 }
 
+.form-section__button-row {
+  height: 100%;
+}
+

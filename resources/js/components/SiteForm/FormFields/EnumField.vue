@@ -2,7 +2,7 @@
 
     <div class="form-group">
         <label :for="fieldId">{{ field.label }}</label>
-        <select class="form-control" :id="fieldId">
+        <select class="form-control" v-model="inputValue" :id="fieldId">
             <option v-for="(option, index) in field.options" :key="index" :value="option">{{ option }}</option>
         </select>
     </div>
@@ -14,6 +14,34 @@
     export default {
 
         props: [ 'section', 'index', 'field'],
+
+        data: function() {
+            return {
+                inputValue: null
+            }
+        },
+
+        watch: {
+            inputValue() {
+                this.updateStore();
+                this.updateValidators();
+            }
+        },
+
+        methods: {
+            updateStore() {
+                const inputData = {
+                    'sectionId': this.section,
+                    'fieldName': this.field.name,
+                    'fieldValue': this.inputValue
+                };
+
+                this.$store.dispatch('siteFormData/updateFieldValue', inputData);
+            },
+            updateValidators() {
+                this.$store.dispatch('siteFormData/updateValidators');
+            }
+        },
 
         computed: {
             fieldId() {
