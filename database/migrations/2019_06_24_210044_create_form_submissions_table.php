@@ -19,7 +19,7 @@ class CreateFormSubmissionsTable extends Migration
             $table->text('last_name');
             $table->text('email_address');
             $table->text('mobile_number');
-            $table->enum('gender', ['male', 'female', 'other']);
+            $table->enum('gender', ['Male', 'Female', 'Other']);
             $table->text('date_of_birth');
             $table->text('comments')->nullable();
             $table->timestamps();

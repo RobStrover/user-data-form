@@ -16,8 +16,7 @@ function initSiteForm(siteFormElement) {
 
     Vue.component('siteform', require('../components/SiteForm/SiteForm').default);
 
-    const formEndpoint = siteFormElement.getAttribute('data-form-endpoint')
-    console.log(formEndpoint, siteFormElement.getAttribute('data-form-sections'));
+    const formEndpoint = siteFormElement.getAttribute('data-form-endpoint');
 
     const siteFormData = {
         namespaced: true,
@@ -26,7 +25,7 @@ function initSiteForm(siteFormElement) {
             isValid: false,
             openSection: 0,
             formSections: JSON.parse(siteFormElement.getAttribute('data-form-sections')),
-            formUrl: 'http://localhost:8000/submit',
+            formUrl: formEndpoint,
         },
         getters: {
             numberOfFormSections(state) {
@@ -40,7 +39,7 @@ function initSiteForm(siteFormElement) {
 
                     for (let i = 0; i < formSectionFields.length; i++) {
                         const formSectionField = formSectionFields[i];
-                        formData[name] = formSectionField.value || null
+                        formData[formSectionField.name] = formSectionField.value || null
                     }
                 };
 
@@ -49,9 +48,12 @@ function initSiteForm(siteFormElement) {
         },
         mutations: {
             storeFieldValue(state, { sectionId, fieldName, fieldValue }) {
-                state.formSections[sectionId]['fields']
-                    .find(field => field.name == fieldName)
-                    .value = fieldValue
+
+                let formItem = state.formSections[sectionId]['fields']
+                    .find(field => field.name == fieldName);
+
+                if (formItem)
+                    Vue.set(formItem, 'value', fieldValue);
             },
             storeSubmitting(state, status) {
                 state.submitting = status
@@ -71,16 +73,18 @@ function initSiteForm(siteFormElement) {
             },
             postForm(context) {
 
-                console.log(context.getters)
+                console.log(context.state.formSections[0].fields, context.getters['formPostArray']);
+
                 context.commit('storeSubmitting', true);
 
-                window.axios.post(context.state.formEndpoint, context.getters['formPostArray'])
+                window.axios.post(context.state.formUrl, context.getters['formPostArray'])
                     .then( (response) => {
                         context.commit('storeSubmitting', false);
                     })
                     .catch ( (error) => {
                         context.commit('storeSubmitting', false);
                     });
+
 
 
             }

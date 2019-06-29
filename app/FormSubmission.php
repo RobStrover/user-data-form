@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Validator;
 
 class FormSubmission extends Model
 {
@@ -23,6 +24,8 @@ class FormSubmission extends Model
 
     protected $guarded = ['id'];
 
+    private $errors;
+
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -31,16 +34,29 @@ class FormSubmission extends Model
     protected $hidden = ['id'];
 
     private $rules = [
-        'first_name' => 'required|max:191'
+        'first_name' => 'required|max:191',
+        'last_name' => 'required|max:191',
+        'email_address' => 'required|email',
+        'mobile_number' => 'required|numeric|phone',
+        'gender' => 'required|in:Male,Female,Other',
+        'date_of_birth' => 'date_format:d/m/Y',
     ];
 
     public function validate($data)
     {
-        // make a new validator object
         $v = Validator::make($data, $this->rules);
 
-        // return the result
-        return $v;
+        if ($v->fails()) {
+            $this->errors = $v->errors();
+            return false;
+        };
+
+        return true;
+    }
+
+    public function errors()
+    {
+        return $this->errors;
     }
 
     /**

@@ -13,7 +13,17 @@ class FormSubmissionController extends Controller
 
         $data = $request->all();
 
-        FormSubmission::create($data);
+        $formSubmission = new FormSubmission();
+
+        echo '<pre>';
+        var_dump($formSubmission->validate($data));
+        die;
+
+        if ($formSubmission->validate($data)) {
+            FormSubmission::create($data);
+        } else {
+            die('nope');
+        }
 
     }
 

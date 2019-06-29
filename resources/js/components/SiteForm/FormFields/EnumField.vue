@@ -13,6 +13,10 @@
 
     export default {
 
+        mounted() {
+            console.log(this.field);
+        },
+
         props: [ 'section', 'index', 'field'],
 
         data: function() {

@@ -57,7 +57,6 @@
                 return `Field_${fieldType}`;
             },
             submitForm() {
-                console.log('submitting');
                 this.$store.dispatch('siteFormData/submitForm')
             }
         },
