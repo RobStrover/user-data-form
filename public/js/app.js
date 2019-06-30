@@ -1697,6 +1697,7 @@ module.exports = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Validation_InvalidFeedback__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Validation/InvalidFeedback */ "./resources/js/components/SiteForm/Validation/InvalidFeedback.vue");
 //
 //
 //
@@ -1706,8 +1707,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['section', 'index', 'field'],
+  components: {
+    InvalidFeedback: _Validation_InvalidFeedback__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
   data: function data() {
     return {
       inputValue: null
@@ -1735,6 +1741,17 @@ __webpack_require__.r(__webpack_exports__);
   computed: {
     fieldId: function fieldId() {
       return "section-".concat(this.section, "-field-").concat(this.index);
+    },
+    fieldErrors: function fieldErrors() {
+      var _this = this;
+
+      return this.$store.state.siteFormData.fieldValidationMessages.filter(function (validationMessage) {
+        return validationMessage.fieldName == _this.field.name;
+      });
+    },
+    formClass: function formClass() {
+      if (this.fieldErrors.length) return "form-control is-invalid";
+      return 'form-control';
     }
   }
 });
@@ -1750,6 +1767,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Validation_InvalidFeedback__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Validation/InvalidFeedback */ "./resources/js/components/SiteForm/Validation/InvalidFeedback.vue");
 //
 //
 //
@@ -1759,8 +1777,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['section', 'index', 'field'],
+  components: {
+    InvalidFeedback: _Validation_InvalidFeedback__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
   data: function data() {
     return {
       inputValue: null
@@ -1788,6 +1811,17 @@ __webpack_require__.r(__webpack_exports__);
   computed: {
     fieldId: function fieldId() {
       return "section-".concat(this.section, "-field-").concat(this.index);
+    },
+    fieldErrors: function fieldErrors() {
+      var _this = this;
+
+      return this.$store.state.siteFormData.fieldValidationMessages.filter(function (validationMessage) {
+        return validationMessage.fieldName == _this.field.name;
+      });
+    },
+    formClass: function formClass() {
+      if (this.fieldErrors.length) return "form-control is-invalid";
+      return 'form-control';
     }
   }
 });
@@ -1803,6 +1837,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Validation_InvalidFeedback__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Validation/InvalidFeedback */ "./resources/js/components/SiteForm/Validation/InvalidFeedback.vue");
 //
 //
 //
@@ -1814,11 +1849,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  mounted: function mounted() {
-    console.log(this.field);
-  },
   props: ['section', 'index', 'field'],
+  components: {
+    InvalidFeedback: _Validation_InvalidFeedback__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
   data: function data() {
     return {
       inputValue: null
@@ -1846,6 +1883,17 @@ __webpack_require__.r(__webpack_exports__);
   computed: {
     fieldId: function fieldId() {
       return "section-".concat(this.section, "-field-").concat(this.index);
+    },
+    fieldErrors: function fieldErrors() {
+      var _this = this;
+
+      return this.$store.state.siteFormData.fieldValidationMessages.filter(function (validationMessage) {
+        return validationMessage.fieldName == _this.field.name;
+      });
+    },
+    formClass: function formClass() {
+      if (this.fieldErrors.length) return "form-control is-invalid";
+      return 'form-control';
     }
   }
 });
@@ -1861,6 +1909,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Validation_InvalidFeedback__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Validation/InvalidFeedback */ "./resources/js/components/SiteForm/Validation/InvalidFeedback.vue");
 //
 //
 //
@@ -1870,8 +1919,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['section', 'index', 'field'],
+  components: {
+    InvalidFeedback: _Validation_InvalidFeedback__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
   data: function data() {
     return {
       inputValue: null
@@ -1899,6 +1953,17 @@ __webpack_require__.r(__webpack_exports__);
   computed: {
     fieldId: function fieldId() {
       return "section-".concat(this.section, "-field-").concat(this.index);
+    },
+    fieldErrors: function fieldErrors() {
+      var _this = this;
+
+      return this.$store.state.siteFormData.fieldValidationMessages.filter(function (validationMessage) {
+        return validationMessage.fieldName == _this.field.name;
+      });
+    },
+    formClass: function formClass() {
+      if (this.fieldErrors.length) return "form-control is-invalid";
+      return 'form-control';
     }
   }
 });
@@ -1914,6 +1979,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Validation_InvalidFeedback__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Validation/InvalidFeedback */ "./resources/js/components/SiteForm/Validation/InvalidFeedback.vue");
 //
 //
 //
@@ -1923,8 +1989,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['section', 'index', 'field'],
+  components: {
+    InvalidFeedback: _Validation_InvalidFeedback__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
   data: function data() {
     return {
       inputValue: null
@@ -1952,6 +2023,17 @@ __webpack_require__.r(__webpack_exports__);
   computed: {
     fieldId: function fieldId() {
       return "section-".concat(this.section, "-field-").concat(this.index);
+    },
+    fieldErrors: function fieldErrors() {
+      var _this = this;
+
+      return this.$store.state.siteFormData.fieldValidationMessages.filter(function (validationMessage) {
+        return validationMessage.fieldName == _this.field.name;
+      });
+    },
+    formClass: function formClass() {
+      if (this.fieldErrors.length) return "form-control is-invalid";
+      return 'form-control';
     }
   }
 });
@@ -1967,6 +2049,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Validation_InvalidFeedback__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Validation/InvalidFeedback */ "./resources/js/components/SiteForm/Validation/InvalidFeedback.vue");
 //
 //
 //
@@ -1976,8 +2059,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['section', 'index', 'field'],
+  components: {
+    InvalidFeedback: _Validation_InvalidFeedback__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
   data: function data() {
     return {
       inputValue: null
@@ -2005,6 +2093,17 @@ __webpack_require__.r(__webpack_exports__);
   computed: {
     fieldId: function fieldId() {
       return "section-".concat(this.section, "-field-").concat(this.index);
+    },
+    fieldErrors: function fieldErrors() {
+      var _this = this;
+
+      return this.$store.state.siteFormData.fieldValidationMessages.filter(function (validationMessage) {
+        return validationMessage.fieldName == _this.field.name;
+      });
+    },
+    formClass: function formClass() {
+      if (this.fieldErrors.length) return "form-control is-invalid";
+      return 'form-control';
     }
   }
 });
@@ -2144,6 +2243,34 @@ __webpack_require__.r(__webpack_exports__);
       return this.$store.state.siteFormData.formSections;
     }
   }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SiteForm/Validation/InvalidFeedback.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/SiteForm/Validation/InvalidFeedback.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['fieldName', 'errors']
 });
 
 /***/ }),
@@ -37437,33 +37564,42 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "form-group" }, [
-    _c("label", { attrs: { for: _vm.fieldId } }, [
-      _vm._v(_vm._s(_vm.field.label))
-    ]),
-    _vm._v(" "),
-    _c("input", {
-      directives: [
-        {
-          name: "model",
-          rawName: "v-model",
-          value: _vm.inputValue,
-          expression: "inputValue"
-        }
-      ],
-      staticClass: "form-control",
-      attrs: { type: "text", id: _vm.fieldId },
-      domProps: { value: _vm.inputValue },
-      on: {
-        input: function($event) {
-          if ($event.target.composing) {
-            return
+  return _c(
+    "div",
+    { staticClass: "form-group" },
+    [
+      _c("label", { attrs: { for: _vm.fieldId } }, [
+        _vm._v(_vm._s(_vm.field.label))
+      ]),
+      _vm._v(" "),
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.inputValue,
+            expression: "inputValue"
           }
-          _vm.inputValue = $event.target.value
+        ],
+        class: _vm.formClass,
+        attrs: { type: "text", id: _vm.fieldId },
+        domProps: { value: _vm.inputValue },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.inputValue = $event.target.value
+          }
         }
-      }
-    })
-  ])
+      }),
+      _vm._v(" "),
+      _c("InvalidFeedback", {
+        attrs: { fieldName: _vm.field.name, errors: _vm.fieldErrors }
+      })
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -37487,33 +37623,42 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "form-group" }, [
-    _c("label", { attrs: { for: _vm.fieldId } }, [
-      _vm._v(_vm._s(_vm.field.label))
-    ]),
-    _vm._v(" "),
-    _c("input", {
-      directives: [
-        {
-          name: "model",
-          rawName: "v-model",
-          value: _vm.inputValue,
-          expression: "inputValue"
-        }
-      ],
-      staticClass: "form-control",
-      attrs: { type: "email", id: _vm.fieldId },
-      domProps: { value: _vm.inputValue },
-      on: {
-        input: function($event) {
-          if ($event.target.composing) {
-            return
+  return _c(
+    "div",
+    { staticClass: "form-group" },
+    [
+      _c("label", { attrs: { for: _vm.fieldId } }, [
+        _vm._v(_vm._s(_vm.field.label))
+      ]),
+      _vm._v(" "),
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.inputValue,
+            expression: "inputValue"
           }
-          _vm.inputValue = $event.target.value
+        ],
+        class: _vm.formClass,
+        attrs: { type: "email", id: _vm.fieldId },
+        domProps: { value: _vm.inputValue },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.inputValue = $event.target.value
+          }
         }
-      }
-    })
-  ])
+      }),
+      _vm._v(" "),
+      _c("InvalidFeedback", {
+        attrs: { fieldName: _vm.field.name, errors: _vm.fieldErrors }
+      })
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -37537,48 +37682,57 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "form-group" }, [
-    _c("label", { attrs: { for: _vm.fieldId } }, [
-      _vm._v(_vm._s(_vm.field.label))
-    ]),
-    _vm._v(" "),
-    _c(
-      "select",
-      {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.inputValue,
-            expression: "inputValue"
+  return _c(
+    "div",
+    { staticClass: "form-group" },
+    [
+      _c("label", { attrs: { for: _vm.fieldId } }, [
+        _vm._v(_vm._s(_vm.field.label))
+      ]),
+      _vm._v(" "),
+      _c(
+        "select",
+        {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.inputValue,
+              expression: "inputValue"
+            }
+          ],
+          class: _vm.formClass,
+          attrs: { id: _vm.fieldId },
+          on: {
+            change: function($event) {
+              var $$selectedVal = Array.prototype.filter
+                .call($event.target.options, function(o) {
+                  return o.selected
+                })
+                .map(function(o) {
+                  var val = "_value" in o ? o._value : o.value
+                  return val
+                })
+              _vm.inputValue = $event.target.multiple
+                ? $$selectedVal
+                : $$selectedVal[0]
+            }
           }
-        ],
-        staticClass: "form-control",
-        attrs: { id: _vm.fieldId },
-        on: {
-          change: function($event) {
-            var $$selectedVal = Array.prototype.filter
-              .call($event.target.options, function(o) {
-                return o.selected
-              })
-              .map(function(o) {
-                var val = "_value" in o ? o._value : o.value
-                return val
-              })
-            _vm.inputValue = $event.target.multiple
-              ? $$selectedVal
-              : $$selectedVal[0]
-          }
-        }
-      },
-      _vm._l(_vm.field.options, function(option, index) {
-        return _c("option", { key: index, domProps: { value: option } }, [
-          _vm._v(_vm._s(option))
-        ])
-      }),
-      0
-    )
-  ])
+        },
+        _vm._l(_vm.field.options, function(option, index) {
+          return _c("option", { key: index, domProps: { value: option } }, [
+            _vm._v(_vm._s(option))
+          ])
+        }),
+        0
+      ),
+      _vm._v(" "),
+      _c("InvalidFeedback", {
+        attrs: { fieldName: _vm.field.name, errors: _vm.fieldErrors }
+      })
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -37602,33 +37756,42 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "form-group" }, [
-    _c("label", { attrs: { for: _vm.fieldId } }, [
-      _vm._v(_vm._s(_vm.field.label))
-    ]),
-    _vm._v(" "),
-    _c("input", {
-      directives: [
-        {
-          name: "model",
-          rawName: "v-model",
-          value: _vm.inputValue,
-          expression: "inputValue"
-        }
-      ],
-      staticClass: "form-control",
-      attrs: { type: "tel", name: _vm.field.name, id: _vm.fieldId },
-      domProps: { value: _vm.inputValue },
-      on: {
-        input: function($event) {
-          if ($event.target.composing) {
-            return
+  return _c(
+    "div",
+    { staticClass: "form-group" },
+    [
+      _c("label", { attrs: { for: _vm.fieldId } }, [
+        _vm._v(_vm._s(_vm.field.label))
+      ]),
+      _vm._v(" "),
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.inputValue,
+            expression: "inputValue"
           }
-          _vm.inputValue = $event.target.value
+        ],
+        class: _vm.formClass,
+        attrs: { type: "tel", name: _vm.field.name, id: _vm.fieldId },
+        domProps: { value: _vm.inputValue },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.inputValue = $event.target.value
+          }
         }
-      }
-    })
-  ])
+      }),
+      _vm._v(" "),
+      _c("InvalidFeedback", {
+        attrs: { fieldName: _vm.field.name, errors: _vm.fieldErrors }
+      })
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -37652,33 +37815,42 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "form-group" }, [
-    _c("label", { attrs: { for: _vm.fieldId } }, [
-      _vm._v(_vm._s(_vm.field.label))
-    ]),
-    _vm._v(" "),
-    _c("input", {
-      directives: [
-        {
-          name: "model",
-          rawName: "v-model",
-          value: _vm.inputValue,
-          expression: "inputValue"
-        }
-      ],
-      staticClass: "form-control",
-      attrs: { type: "text", name: _vm.field.name, id: _vm.fieldId },
-      domProps: { value: _vm.inputValue },
-      on: {
-        input: function($event) {
-          if ($event.target.composing) {
-            return
+  return _c(
+    "div",
+    { staticClass: "form-group" },
+    [
+      _c("label", { attrs: { for: _vm.fieldId } }, [
+        _vm._v(_vm._s(_vm.field.label))
+      ]),
+      _vm._v(" "),
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.inputValue,
+            expression: "inputValue"
           }
-          _vm.inputValue = $event.target.value
+        ],
+        class: _vm.formClass,
+        attrs: { type: "text", name: _vm.field.name, id: _vm.fieldId },
+        domProps: { value: _vm.inputValue },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.inputValue = $event.target.value
+          }
         }
-      }
-    })
-  ])
+      }),
+      _vm._v(" "),
+      _c("InvalidFeedback", {
+        attrs: { fieldName: _vm.field.name, errors: _vm.fieldErrors }
+      })
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -37702,33 +37874,42 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "form-group" }, [
-    _c("label", { attrs: { for: _vm.fieldId } }, [
-      _vm._v(_vm._s(_vm.field.label))
-    ]),
-    _vm._v(" "),
-    _c("textarea", {
-      directives: [
-        {
-          name: "model",
-          rawName: "v-model",
-          value: _vm.inputValue,
-          expression: "inputValue"
-        }
-      ],
-      staticClass: "form-control",
-      attrs: { name: _vm.field.name, id: _vm.fieldId, rows: "3" },
-      domProps: { value: _vm.inputValue },
-      on: {
-        input: function($event) {
-          if ($event.target.composing) {
-            return
+  return _c(
+    "div",
+    { staticClass: "form-group" },
+    [
+      _c("label", { attrs: { for: _vm.fieldId } }, [
+        _vm._v(_vm._s(_vm.field.label))
+      ]),
+      _vm._v(" "),
+      _c("textarea", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.inputValue,
+            expression: "inputValue"
           }
-          _vm.inputValue = $event.target.value
+        ],
+        class: _vm.formClass,
+        attrs: { name: _vm.field.name, id: _vm.fieldId, rows: "3" },
+        domProps: { value: _vm.inputValue },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.inputValue = $event.target.value
+          }
         }
-      }
-    })
-  ])
+      }),
+      _vm._v(" "),
+      _c("InvalidFeedback", {
+        attrs: { fieldName: _vm.field.name, errors: _vm.fieldErrors }
+      })
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -37884,6 +38065,50 @@ var render = function() {
     }),
     1
   )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SiteForm/Validation/InvalidFeedback.vue?vue&type=template&id=43585bcf&":
+/*!**************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/SiteForm/Validation/InvalidFeedback.vue?vue&type=template&id=43585bcf& ***!
+  \**************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "invalid-feedback" }, [
+    _vm.errors.length > 1
+      ? _c(
+          "ul",
+          _vm._l(_vm.errors, function(error, index) {
+            return _c("li", { key: index }, [
+              _vm._v(
+                "\n            " +
+                  _vm._s(error.fieldValidationMessage) +
+                  "\n        "
+              )
+            ])
+          }),
+          0
+        )
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.errors.length == 1
+      ? _c("span", [_vm._v(_vm._s(_vm.errors[0].fieldValidationMessage))])
+      : _vm._e()
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -51695,6 +51920,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/SiteForm/Validation/InvalidFeedback.vue":
+/*!*************************************************************************!*\
+  !*** ./resources/js/components/SiteForm/Validation/InvalidFeedback.vue ***!
+  \*************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _InvalidFeedback_vue_vue_type_template_id_43585bcf___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./InvalidFeedback.vue?vue&type=template&id=43585bcf& */ "./resources/js/components/SiteForm/Validation/InvalidFeedback.vue?vue&type=template&id=43585bcf&");
+/* harmony import */ var _InvalidFeedback_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./InvalidFeedback.vue?vue&type=script&lang=js& */ "./resources/js/components/SiteForm/Validation/InvalidFeedback.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _InvalidFeedback_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _InvalidFeedback_vue_vue_type_template_id_43585bcf___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _InvalidFeedback_vue_vue_type_template_id_43585bcf___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/SiteForm/Validation/InvalidFeedback.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/SiteForm/Validation/InvalidFeedback.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************!*\
+  !*** ./resources/js/components/SiteForm/Validation/InvalidFeedback.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_InvalidFeedback_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./InvalidFeedback.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SiteForm/Validation/InvalidFeedback.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_InvalidFeedback_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/SiteForm/Validation/InvalidFeedback.vue?vue&type=template&id=43585bcf&":
+/*!********************************************************************************************************!*\
+  !*** ./resources/js/components/SiteForm/Validation/InvalidFeedback.vue?vue&type=template&id=43585bcf& ***!
+  \********************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_InvalidFeedback_vue_vue_type_template_id_43585bcf___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./InvalidFeedback.vue?vue&type=template&id=43585bcf& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SiteForm/Validation/InvalidFeedback.vue?vue&type=template&id=43585bcf&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_InvalidFeedback_vue_vue_type_template_id_43585bcf___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_InvalidFeedback_vue_vue_type_template_id_43585bcf___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/modules/SiteForms.js":
 /*!*******************************************!*\
   !*** ./resources/js/modules/SiteForms.js ***!
@@ -51721,9 +52015,12 @@ function initSiteForm(siteFormElement) {
     namespaced: true,
     state: {
       submitting: false,
+      successMessage: "",
+      failureMessage: "",
       isValid: false,
       openSection: 0,
       formSections: JSON.parse(siteFormElement.getAttribute('data-form-sections')),
+      fieldValidationMessages: [],
       formUrl: formEndpoint
     },
     getters: {
@@ -51742,7 +52039,6 @@ function initSiteForm(siteFormElement) {
           }
         }
 
-        ;
         return formData;
       }
     },
@@ -51756,8 +52052,22 @@ function initSiteForm(siteFormElement) {
         });
         if (formItem) Vue.set(formItem, 'value', fieldValue);
       },
+      storeFieldValidationMessage: function storeFieldValidationMessage(state, _ref2) {
+        var fieldName = _ref2.fieldName,
+            fieldValidationMessage = _ref2.fieldValidationMessage;
+        state.fieldValidationMessages.push({
+          fieldName: fieldName,
+          fieldValidationMessage: fieldValidationMessage
+        });
+      },
       storeSubmitting: function storeSubmitting(state, status) {
         state.submitting = status;
+      },
+      storeFailureMessage: function storeFailureMessage(state, message) {
+        state.failureMessage = message;
+      },
+      storeSuccessMessage: function storeSuccessMessage(state, message) {
+        state.successMessage = message;
       }
     },
     actions: {
@@ -51769,12 +52079,32 @@ function initSiteForm(siteFormElement) {
         // if (context.state.isValid) {
         context.dispatch('postForm'); // }
       },
+      updateValidationMessages: function updateValidationMessages(context, validationMessages) {
+        for (var i = 0; i < Object.keys(validationMessages).length; i++) {
+          var fieldName = Object.keys(validationMessages)[i];
+          var fieldValidationMessages = validationMessages[fieldName];
+
+          for (var _i2 = 0; _i2 < fieldValidationMessages.length; _i2++) {
+            context.commit('storeFieldValidationMessage', {
+              fieldName: fieldName,
+              fieldValidationMessage: fieldValidationMessages[_i2]
+            });
+          }
+        }
+      },
       postForm: function postForm(context) {
-        console.log(context.state.formSections[0].fields, context.getters['formPostArray']);
         context.commit('storeSubmitting', true);
         window.axios.post(context.state.formUrl, context.getters['formPostArray']).then(function (response) {
+          context.commit('storeSuccessMessage', response.data.message);
           context.commit('storeSubmitting', false);
         })["catch"](function (error) {
+          if (error.response.status === 400) {
+            context.dispatch('updateValidationMessages', error.response.data.errors);
+            context.commit('storeFailureMessage', error.response.data.message);
+          } else {
+            context.commit('storeFailureMessage', 'Whoops! Something went wrong, please try again later.');
+          }
+
           context.commit('storeSubmitting', false);
         });
       }

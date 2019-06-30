@@ -22,9 +22,12 @@ function initSiteForm(siteFormElement) {
         namespaced: true,
         state: {
             submitting: false,
+            successMessage: "",
+            failureMessage: "",
             isValid: false,
             openSection: 0,
             formSections: JSON.parse(siteFormElement.getAttribute('data-form-sections')),
+            fieldValidationMessages: [],
             formUrl: formEndpoint,
         },
         getters: {
@@ -41,7 +44,7 @@ function initSiteForm(siteFormElement) {
                         const formSectionField = formSectionFields[i];
                         formData[formSectionField.name] = formSectionField.value || null
                     }
-                };
+                }
 
                 return formData
             }
@@ -55,9 +58,18 @@ function initSiteForm(siteFormElement) {
                 if (formItem)
                     Vue.set(formItem, 'value', fieldValue);
             },
+            storeFieldValidationMessage(state, { fieldName, fieldValidationMessage }) {
+                state.fieldValidationMessages.push({ fieldName, fieldValidationMessage })
+            },
             storeSubmitting(state, status) {
                 state.submitting = status
-            }
+            },
+            storeFailureMessage(state, message) {
+                state.failureMessage = message;
+            },
+            storeSuccessMessage(state, message) {
+                state.successMessage = message;
+            },
         },
         actions: {
             updateFieldValue(context, inputData) {
@@ -71,17 +83,33 @@ function initSiteForm(siteFormElement) {
                     context.dispatch('postForm');
                 // }
             },
+            updateValidationMessages(context, validationMessages) {
+                for (let i = 0; i < Object.keys(validationMessages).length; i++) {
+                    let fieldName = Object.keys(validationMessages)[i];
+                    let fieldValidationMessages = validationMessages[fieldName];
+
+                    for (let i = 0; i < fieldValidationMessages.length; i++) {
+                        context.commit('storeFieldValidationMessage', { fieldName, fieldValidationMessage: fieldValidationMessages[i] })
+                    }
+
+                }
+            },
             postForm(context) {
-
-                console.log(context.state.formSections[0].fields, context.getters['formPostArray']);
-
                 context.commit('storeSubmitting', true);
 
                 window.axios.post(context.state.formUrl, context.getters['formPostArray'])
                     .then( (response) => {
+                        context.commit('storeSuccessMessage', response.data.message);
                         context.commit('storeSubmitting', false);
                     })
                     .catch ( (error) => {
+                        if (error.response.status === 400) {
+                            context.dispatch('updateValidationMessages', error.response.data.errors);
+                            context.commit('storeFailureMessage', error.response.data.message)
+                        } else {
+                            context.commit('storeFailureMessage', 'Whoops! Something went wrong, please try again later.');
+                        }
+
                         context.commit('storeSubmitting', false);
                     });
 

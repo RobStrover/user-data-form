@@ -15,16 +15,21 @@ class FormSubmissionController extends Controller
 
         $formSubmission = new FormSubmission();
 
-        echo '<pre>';
-        var_dump($formSubmission->validate($data));
-        die;
-
         if ($formSubmission->validate($data)) {
             FormSubmission::create($data);
-        } else {
-            die('nope');
+            return response(
+                [
+                    'success' => true,
+                    'message'=>'Thanks for your submission. All done!'
+                ], 200);
         }
 
+    return response(
+        [
+            'success' => false,
+            'message' => 'Whoops! Please complete all the required fields.',
+            'errors' => $formSubmission->errors()->toArray()
+        ], 400);
     }
 
     public function show(Request $request, $id)

@@ -2,16 +2,21 @@
 
     <div class="form-group">
         <label :for="fieldId">{{ field.label }}</label>
-        <textarea v-model="inputValue" class="form-control" :name="field.name" :id="fieldId" rows="3"></textarea>
+        <textarea v-model="inputValue" :class="formClass" :name="field.name" :id="fieldId" rows="3"></textarea>
+        <InvalidFeedback :fieldName="field.name" :errors="fieldErrors"/>
     </div>
 
 </template>
 
 <script>
 
+    import InvalidFeedback from '../Validation/InvalidFeedback';
+
     export default {
 
         props: [ 'section', 'index', 'field'],
+
+        components: { InvalidFeedback },
 
         data: function() {
             return {
@@ -44,6 +49,14 @@
         computed: {
             fieldId() {
                 return `section-${this.section}-field-${this.index}`
+            },
+            fieldErrors() {
+                return this.$store.state.siteFormData.fieldValidationMessages
+                    .filter(validationMessage => { return validationMessage.fieldName == this.field.name });
+            },
+            formClass() {
+                if (this.fieldErrors.length) return `form-control is-invalid`;
+                return 'form-control'
             }
         }
 

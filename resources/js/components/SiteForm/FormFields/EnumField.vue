@@ -2,22 +2,23 @@
 
     <div class="form-group">
         <label :for="fieldId">{{ field.label }}</label>
-        <select class="form-control" v-model="inputValue" :id="fieldId">
+        <select :class="formClass" v-model="inputValue" :id="fieldId">
             <option v-for="(option, index) in field.options" :key="index" :value="option">{{ option }}</option>
         </select>
+        <InvalidFeedback :fieldName="field.name" :errors="fieldErrors"/>
     </div>
 
 </template>
 
 <script>
 
+    import InvalidFeedback from '../Validation/InvalidFeedback';
+
     export default {
 
-        mounted() {
-            console.log(this.field);
-        },
-
         props: [ 'section', 'index', 'field'],
+
+        components: { InvalidFeedback },
 
         data: function() {
             return {
@@ -51,6 +52,14 @@
             fieldId() {
                 return `section-${this.section}-field-${this.index}`
             },
+            fieldErrors() {
+                return this.$store.state.siteFormData.fieldValidationMessages
+                    .filter(validationMessage => { return validationMessage.fieldName == this.field.name });
+            },
+            formClass() {
+                if (this.fieldErrors.length) return `form-control is-invalid`;
+                return 'form-control'
+            }
         }
 
     }
