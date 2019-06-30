@@ -1,7 +1,7 @@
 <template>
 
     <div class="form-group">
-        <label :for="fieldId">{{ field.label }}</label>
+        <label :for="fieldId">{{ `${field.label}:` }}</label>
         <input type="text" v-model="inputValue" :class="formClass" :id="fieldId">
         <InvalidFeedback :fieldName="field.name" :errors="fieldErrors"/>
     </div>
@@ -63,3 +63,17 @@
     }
 
 </script>
+
+<style lang="scss" scoped>
+
+    label {
+        margin-bottom: 0;
+        font-weight: bold;
+    }
+
+    input {
+        border-radius: 10px;
+        border: none;
+    }
+
+</style>

@@ -23,3 +23,13 @@
     }
 
 </script>
+
+<style lang="scss" scoped>
+
+    .site-form__section-parent {
+        padding: 4px;
+        background-color: white;
+        border-radius: 10px;
+    }
+
+</style>

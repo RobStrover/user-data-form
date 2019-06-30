@@ -3,13 +3,13 @@
     <div class="card form-section">
         <div class="card-header form-section__title">
             <h2 class="mb-0">
-                <button class="btn btn-link" type="button">
-                    {{ sectionTitle}}
+                <button @click="navigateToThisSection" class="btn btn-link" type="button">
+                    {{ `Step ${index + 1}: ${sectionTitle}`}}
                 </button>
             </h2>
         </div>
 
-        <div>
+        <div :class="sectionActiveClass">
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-8">
@@ -22,8 +22,8 @@
                     <div class="col-md-4">
                         <div class="row form-section__button-row align-items-end">
                             <div class="col">
-                                <button class="btn btn-primary btn-block" v-if="previousSection" :target="previousSection">Previous</button>
-                                <button class="btn btn-primary btn-block" v-if="nextSection" :target="nextSection">Next</button>
+                                <PreviousSectionButton v-if="previousSection"/>
+                                <NextSectionButton  v-if="nextSection"/>
                                 <button class="btn btn-success btn-block" v-if="!nextSection" @click="submitForm()">Submit</button>
                             </div>
                         </div>
@@ -46,18 +46,28 @@
     import Field_tel from './FormFields/TelephoneField'
     import Field_textarea from './FormFields/TextareaField'
 
+    import NextSectionButton from './Buttons/NextSectionButton';
+    import PreviousSectionButton from './Buttons/PreviousSectionButton';
+
     export default {
 
         props: [ 'index', 'sectionData'],
 
-        components: { Field_text, Field_date, Field_email, Field_enum, Field_tel, Field_textarea },
+        components: {
+            Field_text, Field_date, Field_email, Field_enum, Field_tel, Field_textarea,
+            NextSectionButton, PreviousSectionButton
+        },
 
         methods: {
             getFormComponentName(fieldType) {
                 return `Field_${fieldType}`;
             },
             submitForm() {
-                this.$store.dispatch('siteFormData/submitForm')
+                this.$store.dispatch('siteFormData/clearValidationMessages');
+                this.$store.dispatch('siteFormData/submitForm');
+            },
+            navigateToThisSection() {
+                this.$store.dispatch('siteFormData/navigateToSection', this.index);
             }
         },
 
@@ -78,6 +88,11 @@
                 if (this.index + 1 === this.numberOfFormSections) return;
                 return this.index + 1;
             },
+            sectionActiveClass() {
+                if (this.$store.state.siteFormData.activeSection == this.index)
+                    return `form-section-content open`;
+                return 'form-section-content closed'
+            },
             previousSection() {
                 if (this.index !== 0) return 1;
                 return false;
@@ -87,3 +102,45 @@
     }
 
 </script>
+
+<style lang="scss">
+
+    .card {
+        border: none;
+    }
+
+    .form-section {
+        margin-bottom: 5px;
+
+        .card-header {
+            z-index: 1;
+            border-radius: 10px !important;
+            border: none;
+            padding: 10px 0px;
+            h2 {
+                button {
+                    color: white;
+                }
+            }
+
+        }
+
+        .form-section-content {
+            transition: height 0.3s ease;
+
+            background-color: #dedede;
+            border-radius: 0 0 10px 10px;
+            &.open {
+                margin-top: -5px;
+                height: auto;
+            }
+            &.closed {
+                height: 0;
+            }
+            .card-body {
+                padding: 15px 10px 10px 10px
+            }
+        }
+    }
+
+</style>

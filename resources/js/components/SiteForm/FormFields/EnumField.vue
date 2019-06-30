@@ -1,7 +1,7 @@
 <template>
 
     <div class="form-group">
-        <label :for="fieldId">{{ field.label }}</label>
+        <label :for="fieldId">{{ `${field.label}:` }}</label>
         <select :class="formClass" v-model="inputValue" :id="fieldId">
             <option v-for="(option, index) in field.options" :key="index" :value="option">{{ option }}</option>
         </select>
@@ -65,3 +65,17 @@
     }
 
 </script>
+
+<style lang="scss" scoped>
+
+    label {
+        margin-bottom: 0;
+        font-weight: bold;
+    }
+
+    select {
+        border-radius: 10px;
+        border: none;
+    }
+
+</style>

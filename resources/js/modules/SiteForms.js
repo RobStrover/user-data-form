@@ -25,7 +25,7 @@ function initSiteForm(siteFormElement) {
             successMessage: "",
             failureMessage: "",
             isValid: false,
-            openSection: 0,
+            activeSection: 0,
             formSections: JSON.parse(siteFormElement.getAttribute('data-form-sections')),
             fieldValidationMessages: [],
             formUrl: formEndpoint,
@@ -61,6 +61,9 @@ function initSiteForm(siteFormElement) {
             storeFieldValidationMessage(state, { fieldName, fieldValidationMessage }) {
                 state.fieldValidationMessages.push({ fieldName, fieldValidationMessage })
             },
+            storeClearValidationMessages(state) {
+                state.fieldValidationMessages = [];
+            },
             storeSubmitting(state, status) {
                 state.submitting = status
             },
@@ -70,6 +73,15 @@ function initSiteForm(siteFormElement) {
             storeSuccessMessage(state, message) {
                 state.successMessage = message;
             },
+            storeIncrementSection(state) {
+                state.activeSection++;
+            },
+            storeDecrementSection(state) {
+                state.activeSection--;
+            },
+            storeActiveSection(state, index) {
+                state.activeSection = index;
+            }
         },
         actions: {
             updateFieldValue(context, inputData) {
@@ -77,6 +89,9 @@ function initSiteForm(siteFormElement) {
             },
             updateValidators(context, inputData) {
 
+            },
+            clearValidationMessages(context) {
+                context.commit('storeClearValidationMessages')
             },
             submitForm(context) {
                 // if (context.state.isValid) {
@@ -92,6 +107,16 @@ function initSiteForm(siteFormElement) {
                         context.commit('storeFieldValidationMessage', { fieldName, fieldValidationMessage: fieldValidationMessages[i] })
                     }
 
+                }
+            },
+            navigateToSection(context, index) {
+                context.commit('storeActiveSection', index);
+            },
+            bumpSection(context, direction ) {
+                if (direction == 'next') {
+                    context.commit('storeIncrementSection');
+                } else {
+                    context.commit('storeDecrementSection');
                 }
             },
             postForm(context) {

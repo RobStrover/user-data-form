@@ -10,6 +10,7 @@
 
     <title>Form Test</title>
 
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/vendor.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
 
 </head>
@@ -20,7 +21,9 @@
     @yield('body')
 </main>
 
-<script src="{{ asset('js/app.js') }}"></script>
+<script src="{{ mix('/js/manifest.js') }}"></script>
+<script src="{{ mix('/js/vendor.js') }}"></script>
+<script src="{{ mix('/js/app.js') }}"></script>
 
 </body>
 </html>
