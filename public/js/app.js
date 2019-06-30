@@ -1602,6 +1602,44 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SiteForm/Buttons/FormSubmitButton.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/SiteForm/Buttons/FormSubmitButton.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  computed: {
+    formIsSubmitting: function formIsSubmitting() {
+      return this.$store.state.siteFormData.submitting;
+    },
+    formIsNotValid: function formIsNotValid() {
+      return this.$store.state.siteFormData.isValid;
+    }
+  },
+  methods: {
+    submitForm: function submitForm() {
+      this.$store.dispatch('siteFormData/clearValidationMessages');
+      this.$store.dispatch('siteFormData/submitForm');
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SiteForm/Buttons/NextSectionButton.vue?vue&type=script&lang=js&":
 /*!*********************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/SiteForm/Buttons/NextSectionButton.vue?vue&type=script&lang=js& ***!
@@ -2092,6 +2130,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _FormFields_TextareaField__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./FormFields/TextareaField */ "./resources/js/components/SiteForm/FormFields/TextareaField.vue");
 /* harmony import */ var _Buttons_NextSectionButton__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Buttons/NextSectionButton */ "./resources/js/components/SiteForm/Buttons/NextSectionButton.vue");
 /* harmony import */ var _Buttons_PreviousSectionButton__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Buttons/PreviousSectionButton */ "./resources/js/components/SiteForm/Buttons/PreviousSectionButton.vue");
+/* harmony import */ var _Buttons_FormSubmitButton__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Buttons/FormSubmitButton */ "./resources/js/components/SiteForm/Buttons/FormSubmitButton.vue");
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -2142,6 +2181,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['index', 'sectionData'],
   components: {
@@ -2152,15 +2192,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     Field_tel: _FormFields_TelephoneField__WEBPACK_IMPORTED_MODULE_5__["default"],
     Field_textarea: _FormFields_TextareaField__WEBPACK_IMPORTED_MODULE_6__["default"],
     NextSectionButton: _Buttons_NextSectionButton__WEBPACK_IMPORTED_MODULE_7__["default"],
-    PreviousSectionButton: _Buttons_PreviousSectionButton__WEBPACK_IMPORTED_MODULE_8__["default"]
+    PreviousSectionButton: _Buttons_PreviousSectionButton__WEBPACK_IMPORTED_MODULE_8__["default"],
+    FormSubmitButton: _Buttons_FormSubmitButton__WEBPACK_IMPORTED_MODULE_9__["default"]
   },
   methods: {
     getFormComponentName: function getFormComponentName(fieldType) {
       return "Field_".concat(fieldType);
-    },
-    submitForm: function submitForm() {
-      this.$store.dispatch('siteFormData/clearValidationMessages');
-      this.$store.dispatch('siteFormData/submitForm');
     },
     navigateToThisSection: function navigateToThisSection() {
       this.$store.dispatch('siteFormData/navigateToSection', this.index);
@@ -20842,6 +20879,53 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SiteForm/Buttons/FormSubmitButton.vue?vue&type=template&id=35433165&":
+/*!************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/SiteForm/Buttons/FormSubmitButton.vue?vue&type=template&id=35433165& ***!
+  \************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "button",
+    {
+      staticClass: "btn btn-success btn-block",
+      attrs: { disabled: _vm.formIsSubmitting || _vm.formIsNotValid },
+      on: {
+        click: function($event) {
+          return _vm.submitForm()
+        }
+      }
+    },
+    [
+      _vm.formIsSubmitting
+        ? _c("span", {
+            staticClass: "spinner-border spinner-border-sm",
+            attrs: { role: "status", "aria-hidden": "true" }
+          })
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.formIsSubmitting
+        ? _c("span", [_vm._v("Please wait...")])
+        : _c("span", [_vm._v("Submit")])
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SiteForm/Buttons/NextSectionButton.vue?vue&type=template&id=59173d86&":
 /*!*************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/SiteForm/Buttons/NextSectionButton.vue?vue&type=template&id=59173d86& ***!
@@ -21357,20 +21441,7 @@ var render = function() {
                     _vm._v(" "),
                     _vm.nextSection ? _c("NextSectionButton") : _vm._e(),
                     _vm._v(" "),
-                    !_vm.nextSection
-                      ? _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-success btn-block",
-                            on: {
-                              click: function($event) {
-                                return _vm.submitForm()
-                              }
-                            }
-                          },
-                          [_vm._v("Submit")]
-                        )
-                      : _vm._e()
+                    !_vm.nextSection ? _c("FormSubmitButton") : _vm._e()
                   ],
                   1
                 )
@@ -22753,6 +22824,75 @@ if (token) {
 
 /***/ }),
 
+/***/ "./resources/js/components/SiteForm/Buttons/FormSubmitButton.vue":
+/*!***********************************************************************!*\
+  !*** ./resources/js/components/SiteForm/Buttons/FormSubmitButton.vue ***!
+  \***********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _FormSubmitButton_vue_vue_type_template_id_35433165___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FormSubmitButton.vue?vue&type=template&id=35433165& */ "./resources/js/components/SiteForm/Buttons/FormSubmitButton.vue?vue&type=template&id=35433165&");
+/* harmony import */ var _FormSubmitButton_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FormSubmitButton.vue?vue&type=script&lang=js& */ "./resources/js/components/SiteForm/Buttons/FormSubmitButton.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _FormSubmitButton_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _FormSubmitButton_vue_vue_type_template_id_35433165___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _FormSubmitButton_vue_vue_type_template_id_35433165___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/SiteForm/Buttons/FormSubmitButton.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/SiteForm/Buttons/FormSubmitButton.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************!*\
+  !*** ./resources/js/components/SiteForm/Buttons/FormSubmitButton.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FormSubmitButton_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./FormSubmitButton.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SiteForm/Buttons/FormSubmitButton.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FormSubmitButton_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/SiteForm/Buttons/FormSubmitButton.vue?vue&type=template&id=35433165&":
+/*!******************************************************************************************************!*\
+  !*** ./resources/js/components/SiteForm/Buttons/FormSubmitButton.vue?vue&type=template&id=35433165& ***!
+  \******************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FormSubmitButton_vue_vue_type_template_id_35433165___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./FormSubmitButton.vue?vue&type=template&id=35433165& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SiteForm/Buttons/FormSubmitButton.vue?vue&type=template&id=35433165&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FormSubmitButton_vue_vue_type_template_id_35433165___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FormSubmitButton_vue_vue_type_template_id_35433165___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/SiteForm/Buttons/NextSectionButton.vue":
 /*!************************************************************************!*\
   !*** ./resources/js/components/SiteForm/Buttons/NextSectionButton.vue ***!
@@ -23681,10 +23821,10 @@ function initSiteForm(siteFormElement) {
   var siteFormData = {
     namespaced: true,
     state: {
-      submitting: false,
+      submitting: true,
+      isValid: true,
       successMessage: "",
       failureMessage: "",
-      isValid: false,
       activeSection: 0,
       formSections: JSON.parse(siteFormElement.getAttribute('data-form-sections')),
       fieldValidationMessages: [],
@@ -23758,8 +23898,9 @@ function initSiteForm(siteFormElement) {
         context.commit('storeClearValidationMessages');
       },
       submitForm: function submitForm(context) {
-        // if (context.state.isValid) {
-        context.dispatch('postForm'); // }
+        if (context.state.isValid) {
+          context.dispatch('postForm');
+        }
       },
       updateValidationMessages: function updateValidationMessages(context, validationMessages) {
         for (var i = 0; i < Object.keys(validationMessages).length; i++) {
@@ -23785,6 +23926,7 @@ function initSiteForm(siteFormElement) {
         }
       },
       postForm: function postForm(context) {
+        console.log('here');
         context.commit('storeSubmitting', true);
         window.axios.post(context.state.formUrl, context.getters['formPostArray']).then(function (response) {
           context.commit('storeSuccessMessage', response.data.message);

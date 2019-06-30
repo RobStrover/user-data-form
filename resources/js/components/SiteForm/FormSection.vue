@@ -24,7 +24,7 @@
                             <div class="col">
                                 <PreviousSectionButton v-if="previousSection"/>
                                 <NextSectionButton  v-if="nextSection"/>
-                                <button class="btn btn-success btn-block" v-if="!nextSection" @click="submitForm()">Submit</button>
+                                <FormSubmitButton v-if="!nextSection"/>
                             </div>
                         </div>
                     </div>
@@ -48,6 +48,7 @@
 
     import NextSectionButton from './Buttons/NextSectionButton';
     import PreviousSectionButton from './Buttons/PreviousSectionButton';
+    import FormSubmitButton from './Buttons/FormSubmitButton';
 
     export default {
 
@@ -55,16 +56,12 @@
 
         components: {
             Field_text, Field_date, Field_email, Field_enum, Field_tel, Field_textarea,
-            NextSectionButton, PreviousSectionButton
+            NextSectionButton, PreviousSectionButton, FormSubmitButton
         },
 
         methods: {
             getFormComponentName(fieldType) {
                 return `Field_${fieldType}`;
-            },
-            submitForm() {
-                this.$store.dispatch('siteFormData/clearValidationMessages');
-                this.$store.dispatch('siteFormData/submitForm');
             },
             navigateToThisSection() {
                 this.$store.dispatch('siteFormData/navigateToSection', this.index);

@@ -21,10 +21,10 @@ function initSiteForm(siteFormElement) {
     const siteFormData = {
         namespaced: true,
         state: {
-            submitting: false,
+            submitting: true,
+            isValid: true,
             successMessage: "",
             failureMessage: "",
-            isValid: false,
             activeSection: 0,
             formSections: JSON.parse(siteFormElement.getAttribute('data-form-sections')),
             fieldValidationMessages: [],
@@ -94,9 +94,9 @@ function initSiteForm(siteFormElement) {
                 context.commit('storeClearValidationMessages')
             },
             submitForm(context) {
-                // if (context.state.isValid) {
+                if (context.state.isValid) {
                     context.dispatch('postForm');
-                // }
+                }
             },
             updateValidationMessages(context, validationMessages) {
                 for (let i = 0; i < Object.keys(validationMessages).length; i++) {
@@ -120,6 +120,7 @@ function initSiteForm(siteFormElement) {
                 }
             },
             postForm(context) {
+                console.log('here');
                 context.commit('storeSubmitting', true);
 
                 window.axios.post(context.state.formUrl, context.getters['formPostArray'])
