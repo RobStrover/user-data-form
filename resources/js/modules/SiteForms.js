@@ -1,4 +1,7 @@
-
+const RequiredValidator = require('./Validators/RequiredValidator');
+const EmailValidator = require('./Validators/EmailValidator');
+const TelephoneValidator = require('./Validators/TelephoneValidator');
+const DateValidator = require('./Validators/DateValidator');
 
 function initSiteForms() {
 
@@ -21,8 +24,8 @@ function initSiteForm(siteFormElement) {
     const siteFormData = {
         namespaced: true,
         state: {
-            submitting: true,
-            isValid: true,
+            submitting: false,
+            isValid: false,
             successMessage: "",
             failureMessage: "",
             activeSection: 0,
@@ -81,21 +84,54 @@ function initSiteForm(siteFormElement) {
             },
             storeActiveSection(state, index) {
                 state.activeSection = index;
+            },
+            storeSubmissionIsValid(state, status) {
+                state.isValid = status;
             }
         },
         actions: {
             updateFieldValue(context, inputData) {
                 context.commit('storeFieldValue', inputData);
             },
-            updateValidators(context, inputData) {
+            updateValidators(context) {
 
+                context.commit('storeSubmissionIsValid', true);
+
+                for (let i = 0; i < context.state.formSections.length; i++) {
+                    let formSectionFields = context.state.formSections[i]['fields'];
+
+                    for (let i = 0; i < formSectionFields.length; i++) {
+                        let formSectionField = formSectionFields[i];
+                        let fieldInput = formSectionField.value || "";
+
+                        for (let i = 0; i < formSectionField.validators.length; i++) {
+                            let validator = formSectionField.validators[i];
+                            let validatorName = eval(`${validator.charAt(0).toUpperCase()}${validator.slice(1)}Validator`);
+
+                            if (!validatorName.validate(fieldInput)) {
+                                context.commit('storeFieldValidationMessage', {
+                                    fieldName: formSectionField.name,
+                                    fieldValidationMessage: validatorName.errorMessage
+                                });
+                                context.commit('storeSubmissionIsValid', false);
+                            }
+                        }
+
+                    }
+                }
             },
             clearValidationMessages(context) {
                 context.commit('storeClearValidationMessages')
             },
             submitForm(context) {
+
+                context.dispatch('updateValidators');
+
                 if (context.state.isValid) {
                     context.dispatch('postForm');
+                } else {
+                    context.commit('storeFailureMessage', 'Whoops! Please complete all the required fields.');
+                    context.dispatch('navigateToSectionWithFirstError');
                 }
             },
             updateValidationMessages(context, validationMessages) {
@@ -112,6 +148,20 @@ function initSiteForm(siteFormElement) {
             navigateToSection(context, index) {
                 context.commit('storeActiveSection', index);
             },
+            navigateToSectionWithFirstError({ dispatch, state }) {
+                for (let sectionIndex = 0; sectionIndex < state.formSections.length; sectionIndex++) {
+                    let formSectionFields = state.formSections[sectionIndex]['fields'];
+
+                    for (let i = 0; i < formSectionFields.length; i++) {
+                        const formSectionField = formSectionFields[i];
+
+                        if (state.fieldValidationMessages.find(validationMessage => { return validationMessage.fieldName == formSectionField.name })) {
+                            dispatch('navigateToSection', sectionIndex);
+                            return;
+                        }
+                    }
+                }
+            },
             bumpSection(context, direction ) {
                 if (direction == 'next') {
                     context.commit('storeIncrementSection');
@@ -120,11 +170,11 @@ function initSiteForm(siteFormElement) {
                 }
             },
             postForm(context) {
-                console.log('here');
                 context.commit('storeSubmitting', true);
 
                 window.axios.post(context.state.formUrl, context.getters['formPostArray'])
                     .then( (response) => {
+                        context.commit('storeFailureMessage', '');
                         context.commit('storeSuccessMessage', response.data.message);
                         context.commit('storeSubmitting', false);
                     })
@@ -138,9 +188,6 @@ function initSiteForm(siteFormElement) {
 
                         context.commit('storeSubmitting', false);
                     });
-
-
-
             }
         }
     };

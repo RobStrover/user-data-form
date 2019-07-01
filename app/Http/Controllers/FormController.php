@@ -38,7 +38,7 @@ class FormController extends Controller
                         'name' => 'mobile_number',
                         'label' => 'Mobile Number',
                         'type' => 'tel',
-                        'validators' => ['required', 'uktelephone']
+                        'validators' => ['required', 'telephone']
                     ],
                     [
                         'name' => 'gender',

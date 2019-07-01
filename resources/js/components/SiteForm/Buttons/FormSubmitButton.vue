@@ -1,6 +1,6 @@
 <template>
 
-    <button :disabled="formIsSubmitting || formIsNotValid" class="btn btn-success btn-block" @click="submitForm()">
+    <button :disabled="formIsSubmitting" class="btn btn-success btn-block" @click="submitForm()">
         <span v-if="formIsSubmitting" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
         <span v-if="formIsSubmitting">Please wait...</span>
         <span v-else>Submit</span>

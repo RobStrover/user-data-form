@@ -27,7 +27,6 @@
         watch: {
             inputValue() {
                 this.updateStore();
-                this.updateValidators();
             }
         },
 
@@ -41,9 +40,6 @@
 
                 this.$store.dispatch('siteFormData/updateFieldValue', inputData);
             },
-            updateValidators() {
-                this.$store.dispatch('siteFormData/updateValidators');
-            }
         },
 
         computed: {

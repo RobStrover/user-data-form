@@ -123,8 +123,6 @@
         }
 
         .form-section-content {
-            transition: height 0.3s ease;
-
             background-color: #dedede;
             border-radius: 0 0 10px 10px;
             &.open {

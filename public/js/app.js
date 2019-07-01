@@ -1724,7 +1724,6 @@ __webpack_require__.r(__webpack_exports__);
   watch: {
     inputValue: function inputValue() {
       this.updateStore();
-      this.updateValidators();
     }
   },
   methods: {
@@ -1735,9 +1734,6 @@ __webpack_require__.r(__webpack_exports__);
         'fieldValue': this.inputValue
       };
       this.$store.dispatch('siteFormData/updateFieldValue', inputData);
-    },
-    updateValidators: function updateValidators() {
-      this.$store.dispatch('siteFormData/updateValidators');
     }
   },
   computed: {
@@ -1794,7 +1790,6 @@ __webpack_require__.r(__webpack_exports__);
   watch: {
     inputValue: function inputValue() {
       this.updateStore();
-      this.updateValidators();
     }
   },
   methods: {
@@ -1805,9 +1800,6 @@ __webpack_require__.r(__webpack_exports__);
         'fieldValue': this.inputValue
       };
       this.$store.dispatch('siteFormData/updateFieldValue', inputData);
-    },
-    updateValidators: function updateValidators() {
-      this.$store.dispatch('siteFormData/updateValidators');
     }
   },
   computed: {
@@ -1866,7 +1858,6 @@ __webpack_require__.r(__webpack_exports__);
   watch: {
     inputValue: function inputValue() {
       this.updateStore();
-      this.updateValidators();
     }
   },
   methods: {
@@ -1877,9 +1868,6 @@ __webpack_require__.r(__webpack_exports__);
         'fieldValue': this.inputValue
       };
       this.$store.dispatch('siteFormData/updateFieldValue', inputData);
-    },
-    updateValidators: function updateValidators() {
-      this.$store.dispatch('siteFormData/updateValidators');
     }
   },
   computed: {
@@ -1936,7 +1924,6 @@ __webpack_require__.r(__webpack_exports__);
   watch: {
     inputValue: function inputValue() {
       this.updateStore();
-      this.updateValidators();
     }
   },
   methods: {
@@ -1947,9 +1934,6 @@ __webpack_require__.r(__webpack_exports__);
         'fieldValue': this.inputValue
       };
       this.$store.dispatch('siteFormData/updateFieldValue', inputData);
-    },
-    updateValidators: function updateValidators() {
-      this.$store.dispatch('siteFormData/updateValidators');
     }
   },
   computed: {
@@ -2006,7 +1990,6 @@ __webpack_require__.r(__webpack_exports__);
   watch: {
     inputValue: function inputValue() {
       this.updateStore();
-      this.updateValidators();
     }
   },
   methods: {
@@ -2017,9 +2000,6 @@ __webpack_require__.r(__webpack_exports__);
         'fieldValue': this.inputValue
       };
       this.$store.dispatch('siteFormData/updateFieldValue', inputData);
-    },
-    updateValidators: function updateValidators() {
-      this.$store.dispatch('siteFormData/updateValidators');
     }
   },
   computed: {
@@ -2076,7 +2056,6 @@ __webpack_require__.r(__webpack_exports__);
   watch: {
     inputValue: function inputValue() {
       this.updateStore();
-      this.updateValidators();
     }
   },
   methods: {
@@ -2087,9 +2066,6 @@ __webpack_require__.r(__webpack_exports__);
         'fieldValue': this.inputValue
       };
       this.$store.dispatch('siteFormData/updateFieldValue', inputData);
-    },
-    updateValidators: function updateValidators() {
-      this.$store.dispatch('siteFormData/updateValidators');
     }
   },
   computed: {
@@ -2240,6 +2216,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _FormSection__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FormSection */ "./resources/js/components/SiteForm/FormSection.vue");
+/* harmony import */ var _Validation_FormFeedback__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Validation/FormFeedback */ "./resources/js/components/SiteForm/Validation/FormFeedback.vue");
+//
 //
 //
 //
@@ -2249,13 +2227,47 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    FormSection: _FormSection__WEBPACK_IMPORTED_MODULE_0__["default"]
+    FormSection: _FormSection__WEBPACK_IMPORTED_MODULE_0__["default"],
+    FormFeedback: _Validation_FormFeedback__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   computed: {
     formSections: function formSections() {
       return this.$store.state.siteFormData.formSections;
+    },
+    submissionDone: function submissionDone() {
+      if (this.$store.state.siteFormData.successMessage) return true;
+      return false;
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SiteForm/Validation/FormFeedback.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/SiteForm/Validation/FormFeedback.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  computed: {
+    feedbackMessage: function feedbackMessage() {
+      var failureMessage = this.$store.state.siteFormData.failureMessage;
+      var successMessage = this.$store.state.siteFormData.successMessage;
+      if (failureMessage) return failureMessage;
+      if (successMessage) return successMessage;
     }
   }
 });
@@ -2416,7 +2428,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".card {\n  border: none;\n}\n.form-section {\n  margin-bottom: 5px;\n}\n.form-section .card-header {\n  z-index: 1;\n  border-radius: 10px !important;\n  border: none;\n  padding: 10px 0px;\n}\n.form-section .card-header h2 button {\n  color: white;\n}\n.form-section .form-section-content {\n  -webkit-transition: height 0.3s ease;\n  transition: height 0.3s ease;\n  background-color: #dedede;\n  border-radius: 0 0 10px 10px;\n}\n.form-section .form-section-content.open {\n  margin-top: -5px;\n  height: auto;\n}\n.form-section .form-section-content.closed {\n  height: 0;\n}\n.form-section .form-section-content .card-body {\n  padding: 15px 10px 10px 10px;\n}", ""]);
+exports.push([module.i, ".card {\n  border: none;\n}\n.form-section {\n  margin-bottom: 5px;\n}\n.form-section .card-header {\n  z-index: 1;\n  border-radius: 10px !important;\n  border: none;\n  padding: 10px 0px;\n}\n.form-section .card-header h2 button {\n  color: white;\n}\n.form-section .form-section-content {\n  background-color: #dedede;\n  border-radius: 0 0 10px 10px;\n}\n.form-section .form-section-content.open {\n  margin-top: -5px;\n  height: auto;\n}\n.form-section .form-section-content.closed {\n  height: 0;\n}\n.form-section .form-section-content .card-body {\n  padding: 15px 10px 10px 10px;\n}", ""]);
 
 // exports
 
@@ -20898,7 +20910,7 @@ var render = function() {
     "button",
     {
       staticClass: "btn btn-success btn-block",
-      attrs: { disabled: _vm.formIsSubmitting || _vm.formIsNotValid },
+      attrs: { disabled: _vm.formIsSubmitting },
       on: {
         click: function($event) {
           return _vm.submitForm()
@@ -21478,14 +21490,46 @@ var render = function() {
   return _c(
     "div",
     { staticClass: "site-form__section-parent accordion" },
-    _vm._l(_vm.formSections, function(formSection, index) {
-      return _c("FormSection", {
-        key: index,
-        attrs: { index: index, sectionData: formSection }
-      })
-    }),
-    1
+    [
+      _vm._l(_vm.formSections, function(formSection, index) {
+        return !_vm.submissionDone
+          ? _c("FormSection", {
+              key: index,
+              attrs: { index: index, sectionData: formSection }
+            })
+          : _vm._e()
+      }),
+      _vm._v(" "),
+      _c("FormFeedback")
+    ],
+    2
   )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SiteForm/Validation/FormFeedback.vue?vue&type=template&id=df752074&":
+/*!***********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/SiteForm/Validation/FormFeedback.vue?vue&type=template&id=df752074& ***!
+  \***********************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("p", { staticClass: "text-center" }, [
+    _vm._v(_vm._s(_vm.feedbackMessage))
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -23727,6 +23771,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/SiteForm/Validation/FormFeedback.vue":
+/*!**********************************************************************!*\
+  !*** ./resources/js/components/SiteForm/Validation/FormFeedback.vue ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _FormFeedback_vue_vue_type_template_id_df752074___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FormFeedback.vue?vue&type=template&id=df752074& */ "./resources/js/components/SiteForm/Validation/FormFeedback.vue?vue&type=template&id=df752074&");
+/* harmony import */ var _FormFeedback_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FormFeedback.vue?vue&type=script&lang=js& */ "./resources/js/components/SiteForm/Validation/FormFeedback.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _FormFeedback_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _FormFeedback_vue_vue_type_template_id_df752074___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _FormFeedback_vue_vue_type_template_id_df752074___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/SiteForm/Validation/FormFeedback.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/SiteForm/Validation/FormFeedback.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************!*\
+  !*** ./resources/js/components/SiteForm/Validation/FormFeedback.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FormFeedback_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./FormFeedback.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SiteForm/Validation/FormFeedback.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FormFeedback_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/SiteForm/Validation/FormFeedback.vue?vue&type=template&id=df752074&":
+/*!*****************************************************************************************************!*\
+  !*** ./resources/js/components/SiteForm/Validation/FormFeedback.vue?vue&type=template&id=df752074& ***!
+  \*****************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FormFeedback_vue_vue_type_template_id_df752074___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./FormFeedback.vue?vue&type=template&id=df752074& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SiteForm/Validation/FormFeedback.vue?vue&type=template&id=df752074&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FormFeedback_vue_vue_type_template_id_df752074___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FormFeedback_vue_vue_type_template_id_df752074___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/SiteForm/Validation/InvalidFeedback.vue":
 /*!*************************************************************************!*\
   !*** ./resources/js/components/SiteForm/Validation/InvalidFeedback.vue ***!
@@ -23803,6 +23916,16 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+var RequiredValidator = __webpack_require__(/*! ./Validators/RequiredValidator */ "./resources/js/modules/Validators/RequiredValidator.js");
+
+var EmailValidator = __webpack_require__(/*! ./Validators/EmailValidator */ "./resources/js/modules/Validators/EmailValidator.js");
+
+var TelephoneValidator = __webpack_require__(/*! ./Validators/TelephoneValidator */ "./resources/js/modules/Validators/TelephoneValidator.js");
+
+var DateValidator = __webpack_require__(/*! ./Validators/DateValidator */ "./resources/js/modules/Validators/DateValidator.js");
+
 function initSiteForms() {
   var siteForms = document.getElementsByClassName('site-form__container');
   if (!siteForms.length) return;
@@ -23821,8 +23944,8 @@ function initSiteForm(siteFormElement) {
   var siteFormData = {
     namespaced: true,
     state: {
-      submitting: true,
-      isValid: true,
+      submitting: false,
+      isValid: false,
       successMessage: "",
       failureMessage: "",
       activeSection: 0,
@@ -23887,19 +24010,51 @@ function initSiteForm(siteFormElement) {
       },
       storeActiveSection: function storeActiveSection(state, index) {
         state.activeSection = index;
+      },
+      storeSubmissionIsValid: function storeSubmissionIsValid(state, status) {
+        state.isValid = status;
       }
     },
     actions: {
       updateFieldValue: function updateFieldValue(context, inputData) {
         context.commit('storeFieldValue', inputData);
       },
-      updateValidators: function updateValidators(context, inputData) {},
+      updateValidators: function updateValidators(context) {
+        context.commit('storeSubmissionIsValid', true);
+
+        for (var i = 0; i < context.state.formSections.length; i++) {
+          var formSectionFields = context.state.formSections[i]['fields'];
+
+          for (var _i2 = 0; _i2 < formSectionFields.length; _i2++) {
+            var formSectionField = formSectionFields[_i2];
+            var fieldInput = formSectionField.value || "";
+
+            for (var _i3 = 0; _i3 < formSectionField.validators.length; _i3++) {
+              var validator = formSectionField.validators[_i3];
+              var validatorName = eval("".concat(validator.charAt(0).toUpperCase()).concat(validator.slice(1), "Validator"));
+
+              if (!validatorName.validate(fieldInput)) {
+                context.commit('storeFieldValidationMessage', {
+                  fieldName: formSectionField.name,
+                  fieldValidationMessage: validatorName.errorMessage
+                });
+                context.commit('storeSubmissionIsValid', false);
+              }
+            }
+          }
+        }
+      },
       clearValidationMessages: function clearValidationMessages(context) {
         context.commit('storeClearValidationMessages');
       },
       submitForm: function submitForm(context) {
+        context.dispatch('updateValidators');
+
         if (context.state.isValid) {
           context.dispatch('postForm');
+        } else {
+          context.commit('storeFailureMessage', 'Whoops! Please complete all the required fields.');
+          context.dispatch('navigateToSectionWithFirstError');
         }
       },
       updateValidationMessages: function updateValidationMessages(context, validationMessages) {
@@ -23907,16 +24062,43 @@ function initSiteForm(siteFormElement) {
           var fieldName = Object.keys(validationMessages)[i];
           var fieldValidationMessages = validationMessages[fieldName];
 
-          for (var _i2 = 0; _i2 < fieldValidationMessages.length; _i2++) {
+          for (var _i4 = 0; _i4 < fieldValidationMessages.length; _i4++) {
             context.commit('storeFieldValidationMessage', {
               fieldName: fieldName,
-              fieldValidationMessage: fieldValidationMessages[_i2]
+              fieldValidationMessage: fieldValidationMessages[_i4]
             });
           }
         }
       },
       navigateToSection: function navigateToSection(context, index) {
         context.commit('storeActiveSection', index);
+      },
+      navigateToSectionWithFirstError: function navigateToSectionWithFirstError(_ref3) {
+        var dispatch = _ref3.dispatch,
+            state = _ref3.state;
+
+        for (var sectionIndex = 0; sectionIndex < state.formSections.length; sectionIndex++) {
+          var formSectionFields = state.formSections[sectionIndex]['fields'];
+
+          var _loop = function _loop(i) {
+            var formSectionField = formSectionFields[i];
+
+            if (state.fieldValidationMessages.find(function (validationMessage) {
+              return validationMessage.fieldName == formSectionField.name;
+            })) {
+              dispatch('navigateToSection', sectionIndex);
+              return {
+                v: void 0
+              };
+            }
+          };
+
+          for (var i = 0; i < formSectionFields.length; i++) {
+            var _ret = _loop(i);
+
+            if (_typeof(_ret) === "object") return _ret.v;
+          }
+        }
       },
       bumpSection: function bumpSection(context, direction) {
         if (direction == 'next') {
@@ -23926,9 +24108,9 @@ function initSiteForm(siteFormElement) {
         }
       },
       postForm: function postForm(context) {
-        console.log('here');
         context.commit('storeSubmitting', true);
         window.axios.post(context.state.formUrl, context.getters['formPostArray']).then(function (response) {
+          context.commit('storeFailureMessage', '');
           context.commit('storeSuccessMessage', response.data.message);
           context.commit('storeSubmitting', false);
         })["catch"](function (error) {
@@ -23962,6 +24144,88 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./resources/js/modules/Validators/DateValidator.js":
+/*!**********************************************************!*\
+  !*** ./resources/js/modules/Validators/DateValidator.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function validate(input) {
+  if (isNaN(Date.parse(input))) return false;
+  return true;
+}
+
+var errorMessage = "Please provide a date in the format dd/mm/yyyy";
+module.exports = {
+  validate: validate,
+  errorMessage: errorMessage
+};
+
+/***/ }),
+
+/***/ "./resources/js/modules/Validators/EmailValidator.js":
+/*!***********************************************************!*\
+  !*** ./resources/js/modules/Validators/EmailValidator.js ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function validate(input) {
+  // Email validation regex taken from the Chromium project.
+  var regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return regex.test(input);
+}
+
+var errorMessage = "Please provide a valid email address";
+module.exports = {
+  validate: validate,
+  errorMessage: errorMessage
+};
+
+/***/ }),
+
+/***/ "./resources/js/modules/Validators/RequiredValidator.js":
+/*!**************************************************************!*\
+  !*** ./resources/js/modules/Validators/RequiredValidator.js ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function validate(input) {
+  if (input) return true;
+  return false;
+}
+
+var errorMessage = "Please complete this field";
+module.exports = {
+  validate: validate,
+  errorMessage: errorMessage
+};
+
+/***/ }),
+
+/***/ "./resources/js/modules/Validators/TelephoneValidator.js":
+/*!***************************************************************!*\
+  !*** ./resources/js/modules/Validators/TelephoneValidator.js ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function validate(input) {
+  // Regex taken from http://regexlib.com/(X(1)A(CnTku_dhxFAb2Ain_TgGrhEBW56Fzb_iMYGHVV9wXBbFEcsOKJFZD06iuKpfBEj7OOXprcgm3yjKORA-hCsL__EidjJkaUWLzG9g8rIqtNonJ8uJ6lkB9otCBlntaNDpnokAoSvCa9snIB9aE3nC8Kame0owsXUnbtP4t-UVftAp17pvclyVPTfTnhihXPYy0))/REDetails.aspx?regexp_id=589
+  var regex = /^((\(?0\d{4}\)?\s?\d{3}\s?\d{3})|(\(?0\d{3}\)?\s?\d{3}\s?\d{4})|(\(?0\d{2}\)?\s?\d{4}\s?\d{4}))(\s?\#(\d{4}|\d{3}))?$/;
+  return regex.test(input);
+}
+
+var errorMessage = "Please provide a valid, UK telephone number";
+module.exports = {
+  validate: validate,
+  errorMessage: errorMessage
+};
+
+/***/ }),
+
 /***/ "./resources/sass/app.scss":
 /*!*********************************!*\
   !*** ./resources/sass/app.scss ***!
@@ -23991,9 +24255,9 @@ module.exports = {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/rob/Workspace/user-data-form/resources/js/app.js */"./resources/js/app.js");
-__webpack_require__(/*! /home/rob/Workspace/user-data-form/resources/sass/app.scss */"./resources/sass/app.scss");
-module.exports = __webpack_require__(/*! /home/rob/Workspace/user-data-form/resources/sass/vendor.scss */"./resources/sass/vendor.scss");
+__webpack_require__(/*! C:\Users\rstro\Documents\Workspace\user-data-form\resources\js\app.js */"./resources/js/app.js");
+__webpack_require__(/*! C:\Users\rstro\Documents\Workspace\user-data-form\resources\sass\app.scss */"./resources/sass/app.scss");
+module.exports = __webpack_require__(/*! C:\Users\rstro\Documents\Workspace\user-data-form\resources\sass\vendor.scss */"./resources/sass/vendor.scss");
 
 
 /***/ })
