@@ -1,16 +1,1 @@
-.form-template {
-  background-color: #d2e1ff;
-}
-
-.form-template .site-form__container {
-  height: 100vh;
-}
-
-.form-section__title {
-  background-color: #ffc600;
-}
-
-.form-section__button-row {
-  height: 100%;
-}
-
+.form-template{background-color:#d2e1ff}.form-template .site-form__container{height:100vh}.form-section__title{background-color:#ffc600}.form-section__button-row{height:100%}
